@@ -1,0 +1,31 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#submit').click(function (event) {
+			event.preventDefault();
+
+			$.ajaxSetup({
+			    headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+			});
+
+			$.ajax({
+				method: "post",
+				url: "{{ route('customer.store') }}",
+				data: {
+					name: $('#name').val(),
+					email: $('#email').val()
+				},
+				success: function (data) {
+					window.location.href = "{{ route('customer.index') }}"
+				},
+				error: function (data)        
+				{                                   
+					console.log(data); 
+				}
+			});
+		});
+	});
+</script>
