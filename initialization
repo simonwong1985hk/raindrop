@@ -11,6 +11,16 @@ php artisan storage:link
 
 php artisan make:auth
 
+php artisan preset none
+
+npm install
+
+npm run dev
+
+npm run watch
+
+npm prune --production
+
 php artisan migrate
 
 php artisan make:model MODEL_NAME -a
