@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 Schema::defaultStringLength(191);
 
 config/filesystems.php - storage_path()
+php artisan storage:link
 
 php artisan make:model MODEL_NAME -a
 
