@@ -3,15 +3,10 @@
 config/app.php - Asia/Hong_Kong
 
 MySQL < 5.7.7 
-
 app/Providers/AppServiceProvider.php
 
 use Illuminate\Support\Facades\Schema;
-
-public function boot()
-{
-    Schema::defaultStringLength(191);
-}
+Schema::defaultStringLength(191);
 
 config/filesystems.php - storage_path()
 
