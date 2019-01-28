@@ -19,8 +19,16 @@ npm run dev
 
 npm run watch
 
-npm prune --production
-
 php artisan migrate
 
 php artisan make:model MODEL_NAME -a
+
+npm prune --production
+
+npm prune --production
+
+composer install --optimize-autoloader --no-dev
+
+php artisan config:cache
+
+php artisan route:cache
