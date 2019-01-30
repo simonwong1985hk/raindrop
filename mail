@@ -1,0 +1,7 @@
+.env
+
+config/mail.php
+
+php artisan tinker
+
+Mail::send('welcome', [], function($message) { $message->to('RECEIVER_EMAIL', 'RECEIVER_NAME')->subject('SUBJECT')->from('SENDER_EMAIL', 'SENDER_NAME'); });
