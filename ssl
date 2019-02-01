@@ -52,3 +52,6 @@ protected $middlewareGroups = [
         'bindings',
     ],
 ];
+
+.env
+APP_ENV=production
