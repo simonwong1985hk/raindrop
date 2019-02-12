@@ -1,3 +1,5 @@
+# Request
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <script type="text/javascript">
@@ -10,22 +12,40 @@
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			    }
 			});
-
+			
+			var name = $('#name').val();
+			var email = $('#email').val();
+			var languages = [];
+			$('input[name="languages"]:checked').each(function(){
+				languages.push(this.value);
+			});
+			
 			$.ajax({
 				method: "post",
-				url: "{{ route('customer.store') }}",
+				url: "{{ route('CONTROLLER.FUNCTION') }}",
 				data: {
-					name: $('#name').val(),
-					email: $('#email').val()
+					name: name,
+					email: email,
+					languages: languages
 				},
-				success: function (data) {
-					window.location.href = "{{ route('customer.index') }}"
+				success: function (response) {
+					$('#SELECTOR1').text(response.name);
+					$('#SELECTOR2').text(response.email);
+					$('#SELECTOR3').text(response.languages);
 				},
-				error: function (data)        
+				error: function (message)        
 				{                                   
-					console.log(data); 
+					console.log(message); 
 				}
 			});
 		});
 	});
 </script>
+
+#Response
+
+return response()->json([
+    'name' => $name,
+    'email' => $email,
+    'languages' => $languages
+]);
