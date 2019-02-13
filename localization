@@ -11,11 +11,6 @@ return [
     'language' => '繁體中文'
 ];
 
-<?php
-return [
-    'language' => '简体中文'
-];
-
 /**
  * Middleware - /app/Http/Middleware/LocaleMiddleware.php
  */
@@ -63,6 +58,5 @@ Route::get('{locale}', 'LocaleController@index')->name('locale.index');
  */
 <a href="{{ route('locale.index', ['locale' => 'en']) }}">English</a>
 <a href="{{ route('locale.index', ['locale' => 'hk']) }}">繁體中文</a>
-<a href="{{ route('locale.index', ['locale' => 'cn']) }}">简体中文</a>
 {{ __('messages.language') }}
 
