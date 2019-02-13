@@ -1,3 +1,13 @@
+#/config/locale.php
+<?php
+return [
+	'languages' => [
+		'en' => 'en',
+		'hk' => 'hk',
+		'cn' => 'cn',
+	],
+];
+
 #/resources/lang/en/messages.php            
 <?php
 return [
@@ -16,9 +26,55 @@ return [
     'language' => '简体中文'
 ];
 
-#/routes/web.php
-Route::get('/{locale}', function ($locale) {
-    App::setLocale($locale);
-});
+#/app/Http/Middleware/LocaleMiddleware.php
 
-{{ __('messages.welcome') }}
+use Illuminate\Support\Facades\App;
+
+public function handle($request, Closure $next)
+{
+    if( !$request->session()->has('locale')){
+        $browser_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
+        if ( array_key_exists($browser_language, config('locale.languages')) ) {
+            session(['locale' => $browser_language]);
+        } else {
+            session(['locale' => config('app.locale')]);
+        }
+    } else {
+        App::setLocale(session('locale'));
+    }
+
+    return $next($request);
+}
+
+#/app/Http/Kernel.php
+protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\LocaleMiddleware::class,
+    ],
+];
+
+#/app/Http/Controller/LocaleController.php
+
+php artisan make:model Locale -a
+
+use Illuminate\Support\Facades\App;
+
+public function switch($language)
+{
+    if ( array_key_exists($language, config('locale.languages')) ) {
+        session(['locale' => $language]);
+        App::setLocale($language);
+    }
+
+    return redirect()->back();
+}
+
+#/resources/views/welcome.blade.php
+<a href="{{ route('language.switch', ['language' => 'en']) }}">English</a>
+<a href="{{ route('language.switch', ['language' => 'hk']) }}">繁體中文</a>
+<a href="{{ route('language.switch', ['language' => 'cn']) }}">简体中文</a>
+{{ __('messages.language') }}
+
+#/routes/web.php
+Route::get('{language}', 'LocaleController@switch')->name('language.switch');
