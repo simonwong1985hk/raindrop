@@ -55,3 +55,5 @@ $(selector).fadeTo(speed,opacity,callback);
 $(selector).slideDown(speed,callback);
 $(selector).slideUp(speed,callback);
 $(selector).slideToggle(speed,callback);
+
+$(selector).animate({camelCase1: 'VALUE1', camelCase2: 'VALUE2', camelCasen: 'VALUEn'},speed,callback);
