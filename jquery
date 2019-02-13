@@ -2,7 +2,8 @@ jQuery is a JavaScript Library.
 
 #syntax
 $(document).ready(function(){
-  $(selector).action()
+  $(SELECTOR).ACTION();
+  $(SELECTOR).EVENT(ACTION());
 });
 
 #selector
@@ -11,20 +12,33 @@ $('#ID')
 $('.CLASS')
 $('[ATTRIBUTE]')
 $(this)
-$(":input")
-$(":text")
-$(":password")
-$(":radio")
-$(":checkbox")
-$(":submit")
-$(":reset")
-$(":button")
-$(":image")
-$(":file")
-$(":enabled")
-$(":disabled")
-$(":selected")
-$(":checked")
+$(':input')
+$(':text')
+$(':password')
+$(':radio')
+$(':checkbox')
+$(':submit')
+$(':reset')
+$(':button')
+$(':image')
+$(':file')
+$(':enabled')
+$(':disabled')
+$(':selected')
+$(':checked')
+
+#event
+click()
+dblclick()
+hover()
+mouseenter()
+mouseleave()
+mousedown()
+mouseup()
+focus()
+blur()
+on('EVENT', ACTION())
+on({'EVENT1': ACTION1(), 'EVENT2': ACTION2(), 'EVENTn': ACTIONn()})
 
 #display
 $(selector).hide(speed,callback);
