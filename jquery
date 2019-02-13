@@ -57,4 +57,4 @@ $(selector).slideUp(speed,callback);
 $(selector).slideToggle(speed,callback);
 
 $(selector).animate({camelCase1: 'VALUE1', camelCase2: 'VALUE2', camelCasen: 'VALUEn'},speed,callback);
-$(selector).stop(true/false, true/false);
+$(selector).stop(false/true, false/true);
