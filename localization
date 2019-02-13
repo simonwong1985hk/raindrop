@@ -1,5 +1,7 @@
 #/config/locale.php
+
 <?php
+
 return [
 	'languages' => [
 		'en' => 'en',
@@ -8,20 +10,26 @@ return [
 	],
 ];
 
-#/resources/lang/en/messages.php            
+#/resources/lang/en/messages.php
+
 <?php
+
 return [
     'language' => 'English'
 ];
 
 #/resources/lang/hk/messages.php
+
 <?php
+
 return [
     'language' => '繁體中文'
 ];
 
 #/resources/lang/cn/messages.php
+
 <?php
+
 return [
     'language' => '简体中文'
 ];
