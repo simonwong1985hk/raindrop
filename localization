@@ -37,36 +37,27 @@ return [
 #/resources/views/welcome.blade.php
 {{ __('messages.language') }}
 
-#/routes/web.php
-Route::get('/{locale?}', function ($locale = 'en') {
-	App::setLocale($locale);
-	return view('welcome');
-});
-
 #/app/Http/Middleware/LocaleMiddleware.php
 
 use Illuminate\Support\Facades\App;
 
 public function handle($request, Closure $next)
 {
-    if( !$request->session()->has('locale')){
-        $browser_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+	if (session()->has('locale')) {
+	    App::setLocale(session('locale'));
+	} else {
+	    session(['locale' => config('app.locale')]);
+	    App::setLocale(config('app.locale'));
+	}
 
-        if ( array_key_exists($browser_language, config('locale.languages')) ) {
-            session(['locale' => $browser_language]);
-        } else {
-            session(['locale' => config('app.locale')]);
-        }
-    } else {
-        App::setLocale(session('locale'));
-    }
-
-    return $next($request);
+	return $next($request);
 }
 
 #/app/Http/Kernel.php
+
 protected $middlewareGroups = [
     'web' => [
+    	...
         \App\Http\Middleware\LocaleMiddleware::class,
     ],
 ];
