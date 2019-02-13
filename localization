@@ -2,23 +2,19 @@
  * Structure - /resources/lang/[en,hk,cn]/messages.php
  */
 <?php
-
 return [
     'language' => 'English'
 ];
 
 <?php
-
 return [
     'language' => '繁體中文'
 ];
 
 <?php
-
 return [
     'language' => '简体中文'
 ];
-
 
 /**
  * Middleware - /app/Http/Middleware/LocaleMiddleware.php
@@ -38,7 +34,6 @@ public function handle($request, Closure $next)
 }
 
 #/app/Http/Kernel.php
-
 protected $middlewareGroups = [
     'web' => [
     	...
