@@ -26,9 +26,6 @@ $(":disabled")
 $(":selected")
 $(":checked")
 
-
-More on: https://www.w3schools.com/jquery/jquery_ref_selectors.asp
-
 #display
 $(selector).hide(speed,callback);
 $(selector).show(speed,callback);
