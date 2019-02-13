@@ -1,0 +1,24 @@
+#/resources/lang/en/messages.php            
+<?php
+return [
+    'language' => 'English'
+];
+
+#/resources/lang/hk/messages.php
+<?php
+return [
+    'language' => '繁體中文'
+];
+
+#/resources/lang/cn/messages.php
+<?php
+return [
+    'language' => '简体中文'
+];
+
+#/routes/web.php
+Route::get('/{locale}', function ($locale) {
+    App::setLocale($locale);
+});
+
+{{ __('messages.welcome') }}
