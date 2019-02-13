@@ -34,6 +34,15 @@ return [
     'language' => '简体中文'
 ];
 
+#/resources/views/welcome.blade.php
+{{ __('messages.language') }}
+
+#/routes/web.php
+Route::get('/{locale?}', function ($locale = 'en') {
+	App::setLocale($locale);
+	return view('welcome');
+});
+
 #/app/Http/Middleware/LocaleMiddleware.php
 
 use Illuminate\Support\Facades\App;
@@ -82,7 +91,6 @@ public function switch($language)
 <a href="{{ route('language.switch', ['language' => 'en']) }}">English</a>
 <a href="{{ route('language.switch', ['language' => 'hk']) }}">繁體中文</a>
 <a href="{{ route('language.switch', ['language' => 'cn']) }}">简体中文</a>
-{{ __('messages.language') }}
 
 #/routes/web.php
 Route::get('{language}', 'LocaleController@switch')->name('language.switch');
