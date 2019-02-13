@@ -56,7 +56,7 @@ php artisan make:controller LocaleController
 
 use Illuminate\Support\Facades\App;
 
-public function switch($language)
+public function index($language)
 {
     if ( array_key_exists($language, config('locale.languages')) ) {
         session(['locale' => $language]);
@@ -67,9 +67,9 @@ public function switch($language)
 }
 
 #/resources/views/welcome.blade.php
-<a href="{{ route('language.switch', ['language' => 'en']) }}">English</a>
-<a href="{{ route('language.switch', ['language' => 'hk']) }}">繁體中文</a>
-<a href="{{ route('language.switch', ['language' => 'cn']) }}">简体中文</a>
+<a href="{{ route('locale.index', ['locale' => 'en']) }}">English</a>
+<a href="{{ route('locale.index', ['locale' => 'hk']) }}">繁體中文</a>
+<a href="{{ route('locale.index', ['locale' => 'cn']) }}">简体中文</a>
 
 #/routes/web.php
 Route::get('{language}', 'LocaleController@switch')->name('language.switch');
