@@ -1,5 +1,5 @@
 /**
- * Structure - /resources/lang/[en,hk,cn]/messages.php
+ * Structure - /resources/lang/[en,hk]/messages.php
  */
 <?php
 return [
