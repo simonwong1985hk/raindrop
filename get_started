@@ -1,6 +1,20 @@
+#Installation
+composer create-project --prefer-dist laravel/laravel project
+
+#Document Root
+public/index.php
+
+#Directory Permissions
+/storage
+/bootstrap/cache
+
+#Application Key
+php artisan key:generate
+
 .env
 
-config/app.php - Asia/Hong_Kong
+#config/app.php
+'timezone' => 'Asia/Hong_Kong',
 
 MySQL < 5.7.7 
 app/Providers/AppServiceProvider.php
