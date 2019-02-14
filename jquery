@@ -2,8 +2,8 @@ jQuery is a JavaScript Library.
 
 #syntax
 $(document).ready(function(){
-  $(SELECTOR).ACTION();
-  $(SELECTOR).EVENT(ACTION());
+  $(selector).ACTION();
+  $(selector).EVENT(ACTION());
 });
 
 #selector
@@ -40,21 +40,27 @@ blur()
 on('EVENT', ACTION())
 on({'EVENT1': ACTION1(), 'EVENT2': ACTION2(), 'EVENTn': ACTIONn()})
 
-#display
+#show / hide
 $(selector).hide(speed,callback);
 $(selector).show(speed,callback);
 $(selector).toggle(speed,callback);
 
-#display opacity
+#fade
 $(selector).fadeIn(speed,callback);
 $(selector).fadeOut(speed,callback);
 $(selector).fadeToggle(speed,callback);
 $(selector).fadeTo(speed,opacity,callback);
 
-#display height padding-top padding-bottom
+#slide
 $(selector).slideDown(speed,callback);
 $(selector).slideUp(speed,callback);
 $(selector).slideToggle(speed,callback);
 
 $(selector).animate({camelCase1: 'VALUE1', camelCase2: 'VALUE2', camelCasen: 'VALUEn'},speed,callback);
 $(selector).stop(false/true, false/true);
+
+#get
+$(selector).text()
+$(selector).html()
+$(selector).val()
+$(selector).attr('ATTRIBUTE_NAME')
