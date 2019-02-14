@@ -1,5 +1,7 @@
 global path: $HOME/.compoesr/vendor/bin
 
+composer create-project --prefer-dist laravel/laravel blog
+
 composer require
 composer global require
 
