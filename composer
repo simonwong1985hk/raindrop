@@ -1,11 +1,14 @@
+global path: $HOME/.compoesr/vendor/bin
+
 composer require
 composer global require
 
 composer show
 composer global show
 
-composer update --dry-run
 composer update
-
-composer global update --dry-run
 composer global update
+
+composer update --dry-run
+composer global update --dry-run
+
