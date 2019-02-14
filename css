@@ -3,3 +3,13 @@ descendant selector (space)
 child selector (>)
 adjacent sibling selector (+)
 general sibling selector (~)
+
+#Pseudo Classes
+selector:pseudo-class {
+  property:value;
+}
+
+#Pseudo Elements
+selector::pseudo-element {
+  property:value;
+}
