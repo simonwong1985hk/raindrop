@@ -1,3 +1,6 @@
+composer require
+composer global require
+
 composer show
 composer global show
 
