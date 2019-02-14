@@ -1,0 +1,8 @@
+composer show
+composer global show
+
+composer update --dry-run
+composer update
+
+composer global update --dry-run
+composer global update
