@@ -40,7 +40,7 @@ blur()
 on('EVENT', ACTION())
 on({'EVENT1': ACTION1(), 'EVENT2': ACTION2(), 'EVENTn': ACTIONn()})
 
-#show / hide
+#show/hide
 $(selector).hide(speed,callback);
 $(selector).show(speed,callback);
 $(selector).toggle(speed,callback);
@@ -60,7 +60,19 @@ $(selector).animate({camelCase1: 'VALUE1', camelCase2: 'VALUE2', camelCasen: 'VA
 $(selector).stop(false/true, false/true);
 
 #get
-$(selector).text()
-$(selector).html()
-$(selector).val()
-$(selector).attr('ATTRIBUTE_NAME')
+$(selector).text();
+$(selector).html();
+$(selector).val();
+$(selector).attr('ATTRIBUTE_NAME');
+
+#set
+$(selector).text('NEW_CONTENT');
+$(selector).html('NEW_CONTENT');
+$(selector).val('NEW_CONTENT');
+$(selector).attr('ATTRIBUTE_NAME', 'NEW_CONTENT');
+
+#set with callback
+$(selector).text(function(index,old_value) {return new_value});
+$(selector).html(function(index,old_value) {return new_value});
+$(selector).val(function(index,old_value) {return new_value});
+$(selector).attr('ATTRIBUTE_NAME', function(index,old_value) {return new_value});
