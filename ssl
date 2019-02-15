@@ -1,12 +1,6 @@
 php artisan make:middleware HttpsProtocol
 
 #app/Http/Middleware/HttpsProtocol.php
-<?php
-
-namespace App\Http\Middleware;
-
-use Closure;
-
 class HttpsProtocol
 {
     public function handle($request, Closure $next)
