@@ -2,15 +2,15 @@ jQuery is a JavaScript Library.
 
 #Syntax
 $(document).ready(function(){
-  $(selector).ACTION();
-  $(selector).EVENT(ACTION());
+  $(selector).Action();
+  $(selector).Event(Action());
 });
 
 #Selector
-$('ELEMENT')
-$('#ID')
-$('.CLASS')
-$('[ATTRIBUTE]')
+$('element')
+$('#id')
+$('.class')
+$('[attribute]')
 $(this)
 $(':input')
 $(':text')
@@ -37,8 +37,8 @@ mousedown()
 mouseup()
 focus()
 blur()
-on('EVENT', ACTION())
-on({'EVENT1': ACTION1(), 'EVENT2': ACTION2(), 'EVENTn': ACTIONn()})
+on('Event', Action())
+on({'Event1': Action1(), 'Event2': Action2(), 'Eventn': Actionn()})
 
 #Effect - Show/Hide
 $(selector).hide(speed,callback);
@@ -57,7 +57,7 @@ $(selector).slideUp(speed,callback);
 $(selector).slideToggle(speed,callback);
 
 #Effect - Animate
-$(selector).animate({camelCase1: 'VALUE1', camelCase2: 'VALUE2', camelCasen: 'VALUEn'},speed,callback);
+$(selector).animate({camelCase1: 'Value1', camelCase2: 'Value2', camelCasen: 'Valuen'},speed,callback);
 $(selector).stop(false/true, false/true);
 
 #Get Content
