@@ -59,25 +59,25 @@ $(selector).slideToggle(speed,callback);
 $(selector).animate({camelCase1: 'VALUE1', camelCase2: 'VALUE2', camelCasen: 'VALUEn'},speed,callback);
 $(selector).stop(false/true, false/true);
 
-#get
+#get content
 $(selector).text();
 $(selector).html();
 $(selector).val();
 $(selector).attr('ATTRIBUTE_NAME');
 
-#set
+#set content
 $(selector).text('NEW_CONTENT');
 $(selector).html('NEW_CONTENT');
 $(selector).val('NEW_CONTENT');
 $(selector).attr('ATTRIBUTE_NAME', 'NEW_CONTENT');
 
-#set with callback
+#set content with callback
 $(selector).text(function(index,old_value) {return new_value});
 $(selector).html(function(index,old_value) {return new_value});
 $(selector).val(function(index,old_value) {return new_value});
 $(selector).attr('ATTRIBUTE_NAME', function(index,old_value) {return new_value});
 
-#add
+#add elements
 $(selector).append() #children
 $(selector).prepend() #children
 $(selector).after() #sibling
