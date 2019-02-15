@@ -38,7 +38,7 @@ mouseup()
 focus()
 blur()
 on('Event', Action())
-on({'Event1': Action1(), 'Event2': Action2(), 'Eventn': Actionn()})
+on({'Event1': Action1(), 'Event2': Action2(), ...})
 
 #Effect - Show/Hide
 $(selector).hide(speed,callback);
@@ -57,7 +57,7 @@ $(selector).slideUp(speed,callback);
 $(selector).slideToggle(speed,callback);
 
 #Effect - Animate
-$(selector).animate({camelCase1: 'Value1', camelCase2: 'Value2', camelCasen: 'Valuen'},speed,callback);
+$(selector).animate({camelCase1: 'Value1', camelCase2: 'Value2', ...},speed,callback);
 $(selector).stop(false/true, false/true);
 
 #Get Content
@@ -93,3 +93,6 @@ $(selector).empty(); # Delete Children
 $(selector).addClass('Class Name');
 $(selector).removeClass('Class Name');
 $(selector).toggleClass('Class Name');
+$(selector).css('Property'); # Get One
+$(selector).css('Property', 'Value'); # Set All
+$(selector).css({'Property': 'Value', 'Property': 'Value', ...});
