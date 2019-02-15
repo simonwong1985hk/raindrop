@@ -85,7 +85,8 @@ $(selector).after(); # Add Sibling
 $(selector).before(); # Add Sibling
 
 #Remove Elements
-$(selector).remove(); # Delete Parents and Children
+$(selector).remove(); # Delete Family
+$(selector).remove('Filter'); # Delete Family with Filter
 $(selector).empty(); # Delete Children
 
 #Get and Set CSS Classes
