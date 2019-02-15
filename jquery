@@ -96,3 +96,13 @@ $(selector).toggleClass('Class Name');
 $(selector).css('Property'); # Get One
 $(selector).css('Property', 'Value'); # Set All
 $(selector).css({'Property': 'Value', 'Property': 'Value', ...});
+
+# Dimensions
+$(selector).width() # Element Only
+$(selector).height() # Element Only
+$(selector).innerWidth() # Include Border
+$(selector).innerHeight() # Include Border
+$(selector).outerWidth() # Include Padding
+$(selector).outerHeight() # Include Padding
+$(selector).outerWidth(true) # Include Margin
+$(selector).outerHeight(true) # Include Margin
