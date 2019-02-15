@@ -76,3 +76,9 @@ $(selector).text(function(index,old_value) {return new_value});
 $(selector).html(function(index,old_value) {return new_value});
 $(selector).val(function(index,old_value) {return new_value});
 $(selector).attr('ATTRIBUTE_NAME', function(index,old_value) {return new_value});
+
+#add
+$(selector).append() #children
+$(selector).prepend() #children
+$(selector).after() #sibling
+$(selector).before() #sibling
