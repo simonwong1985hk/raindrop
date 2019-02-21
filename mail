@@ -1,7 +1,16 @@
-.env
+# .env
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
 
-config/mail.php
-
-php artisan tinker
-
-Mail::send('welcome', [], function($message) { $message->to('RECEIVER_EMAIL', 'RECEIVER_NAME')->subject('SUBJECT')->from('SENDER_EMAIL', 'SENDER_NAME'); });
+# routes/web.php
+Route::get('/', function () {
+    Mail::send('welcome', [], function($message) {
+    	$message->to('RECEIVER_EMAIL', 'RECEIVER_NAME')
+    			->subject('SUBJECT')
+    			->from('SENDER_EMAIL', 'SENDER_NAME');
+    });
+});
