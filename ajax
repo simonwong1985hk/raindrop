@@ -33,8 +33,7 @@
 					$('#SELECTOR2').text(response.email);
 					$('#SELECTOR3').text(response.languages);
 				},
-				error: function (message)        
-				{                                   
+				error: function (message) {                                   
 					console.log(message); 
 				}
 			});
