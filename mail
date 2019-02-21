@@ -1,3 +1,5 @@
+Send a new message using a view.
+
 # .env
 MAIL_DRIVER=smtp
 MAIL_HOST=smtp.mailtrap.io
