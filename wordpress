@@ -1,0 +1,3 @@
+https://wp-cli.org/
+
+wp search-replace 'old-url' 'new-url'
