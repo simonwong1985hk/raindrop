@@ -1,0 +1,57 @@
+git config -l
+
+git config --global user.name USER_NAME
+
+git config --global user.email USER_EMAIL
+
+git config --global core.editor subl
+
+git init
+
+git status
+
+git add .
+
+git commit -m 'COMMENT'
+
+git log
+
+git reset --hard COMMIT
+
+git clean -fd
+
+git reflog
+
+git branch
+
+git branch BRANCH
+
+git checkout BRANCH
+
+git checkout -b BRANCH
+
+git branch -D BRANCH
+
+git diff master BRANCH
+
+git merge BRANCH
+
+git branch -d BRANCH
+
+git clone URL
+
+git remote -v
+
+git remote add origin URL
+
+git remote set-url origin URL
+
+git push -u origin master
+
+git remote add upstream URL
+
+git fetch upstream
+
+git checkout master
+
+git merge upstream/master
