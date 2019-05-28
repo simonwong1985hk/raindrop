@@ -41,7 +41,11 @@ ps -eo pcpu,pid,user,args | sort -r -k1 | less
 
 rm NEW_LINK_NAME (if folder, do NOT suffix with /)
 
+#without SOURCE_FOLDER
 rsync -av SOURCE_FOLDER/ DESTINATION_FOLDER
+
+#with SOURCE_FOLDER
+rsync -av SOURCE_FOLDER DESTINATION_FOLDER
 
 ssh USERNAME@HOSTNAME
 
