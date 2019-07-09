@@ -25,6 +25,8 @@ find . -type f -name 'FILENAME' -exec rename 's/OLD/NEW/' {} \;
 
 grep -irn --color=auto 'PATTERN' .
 
+grep -irl 'PATTERN' DIRECTORY/ | xargs sed -i 's/TARGET/REPLACEMENT/g'
+
 kill PID
 
 killall -HUP mDNSResponder
