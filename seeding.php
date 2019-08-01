@@ -1,5 +1,4 @@
 php artisan make:factory UserFactory --model=User
-# /database/factories/UserFactory.php
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
@@ -11,15 +10,9 @@ $factory->define(User::class, function (Faker $faker) {
 });
 
 php artisan make:seeder UsersTableSeeder
-# /database/seeds/UsersTableSeeder
 public function run()
 {
     factory(App\User::class, 500)->create();
-    
-    # For relationship
-    factory(App\User::class, 50)->create()->each(function ($user) {
-        $user->posts()->save(factory(App\Post::class)->make());
-    });
 }
 
 # /database/seeds/DatabaseSeeder.php
@@ -27,17 +20,11 @@ public function run()
 {
     $this->call([
         UsersTableSeeder::class,
-        PostsTableSeeder::class,
-        CommentsTableSeeder::class,
     ]);
 }
 
 composer dump-autoload
 
-php artisan db:seed # For all
+php artisan db:seed
 
-php artisan db:seed --class=UsersTableSeeder # For one
-
-php artisan migrate:refresh --seed # For all new
-
-php artisan db:seed --force # Force in production
+php artisan migrate:refresh --seed
