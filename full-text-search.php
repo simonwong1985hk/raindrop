@@ -58,3 +58,25 @@ trait FullTextSearch
 # app/User.php
 use FullTextSearch;
 protected $searchable = ['name', 'email'];
+
+php artisan make:controller SearchController
+class SearchController extends Controller
+{
+    public function search(Request $request)
+    {
+    	if($request->has('query')){
+            $query = $request->input('query');
+    		$users = User::search($query)->paginate(50);
+            return view('index', compact('users', $query));
+    	}else{
+    		$users = User::paginate(50);
+            return view('index', compact('users'));
+    	}
+    }
+}
+
+@isset($query)
+    {{ $users->appends(['query' => $query])->links() }}
+@else
+    {{ $users->links() }}
+@endisset
