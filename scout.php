@@ -26,11 +26,17 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-    	if($request->has('search')){
-    		$users = User::search($request->input('search'))->paginate(50);	
+    	if($request->has('query')){
+    		$users = User::search($request->input('query'))->paginate(50);	
     	}else{
     		$users = User::paginate(50);
     	}
         return view('index', compact('users'));
     }
 }
+
+@isset($keywords)
+    {{ $users->appends(['query' => $keywords])->links() }}
+@else
+    {{ $users->links() }}
+@endisset
