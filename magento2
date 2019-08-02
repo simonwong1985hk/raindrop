@@ -1,0 +1,8 @@
+# Shared Hosting
+Add
+
+	always_populate_raw_post_data = -1
+
+In
+
+	/.user.ini

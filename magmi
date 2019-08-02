@@ -1,0 +1,37 @@
+# Access Magmi
+URL/magmi/web/magmi.php
+Username: magmi
+Password: magmi
+
+# Advanced Utilities
+Clear Catalog, Categories and Reviews v1.0.2
+
+# Configure Global Parameters
+Reporting step in %: 0.5 (in case stuck)
+
+# Configure Current Profile (Default)
+Profile to configure & Datasources - Keep the default value is OK
+
+# General Plugins
+Magmi Optimizer v1.0.5 info
+Magmi Magento Reindexer v1.0.4
+On the fly category creator/importer v0.2.5
+Image attributes processor v1.0.33a
+On the fly indexer v0.2
+Value Trimmer for select/multiselect v0.0.3
+
+# Category CSV
+sku,categories
+test,Category1/Sub Category1;;Category2/Sub Category2;;Category3/Sub Category3
+
+# Simple Product CSV - categories
+sku,attribute_set,type,store,categories,name,description,short_description,price,special_price,special_from_date,special_to_date,news_from_date,news_to_date,qty,is_in_stock,manage_stock,use_config_manage_stock,status,visibility,weight,tax_class_id,small_image,image,thumbnail,media_gallery
+sku001,Default,simple,admin,Category1/SubCategory1;;Category2/SubCategory2,Product Name,Description,Short Description,25,,,,,,999,1,1,1,1,4,0.5,0,small_image.png,image.png,thumbnail.png,gallery-1.png;gallery-2.png;gallery-3.png;gallery-4.png;gallery-5.png;gallery-6.png;gallery-7.png;gallery-8.png;gallery-9.png;gallery-10.png;
+
+# Simple Product CSV - category_ids
+sku,attribute_set,type,store,category_ids,name,description,short_description,price,special_price,special_from_date,special_to_date,news_from_date,news_to_date,qty,is_in_stock,manage_stock,use_config_manage_stock,status,visibility,weight,tax_class_id,small_image,image,thumbnail,media_gallery
+sku001,Default,simple,admin,"3,4,5,6",Product Name,Description,Short Description,25,,,,,,999,1,1,1,1,4,0.5,0,small_image.png,image.png,thumbnail.png,gallery-1.png;gallery-2.png;gallery-3.png;gallery-4.png;gallery-5.png;gallery-6.png;gallery-7.png;gallery-8.png;gallery-9.png;gallery-10.png;
+
+# Simple Product with Custom Options CSV - Value:[fixed|percent]:price_modifier:[sku_modifier]:[sort number]
+sku,attribute_set,type,store,category_ids,name,description,short_description,price,special_price,special_from_date,special_to_date,news_from_date,news_to_date,qty,is_in_stock,manage_stock,use_config_manage_stock,status,visibility,weight,tax_class_id,small_image,image,thumbnail,media_gallery,options_container,Size:drop_down:1:1
+sku001,Default,simple,admin,"3,4,5,6",Product Name,Description,Short Description,25,,,,,,999,1,1,1,1,4,0.5,0,small_image.png,image.png,thumbnail.png,gallery-1.png;gallery-2.png;gallery-3.png;gallery-4.png;gallery-5.png;gallery-6.png;gallery-7.png;gallery-8.png;gallery-9.png;gallery-10.png;gallery-11.png;gallery-12.png;gallery-13.png,container1,Small:fixed:0:Small:1|Medium:fixed:10:Medium:2|Large:fixed:20:Large:3

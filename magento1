@@ -1,0 +1,31 @@
+# Shared Hosting
+
+Add
+
+    $isShellDisabled = true;
+
+In
+
+    /cron.php
+
+
+#1 ISSUE:
+"Item (Mage_Catalog_Model_Product) with the same id "####" already exist"
+
+#2 SOLUTION:
+
+Replace
+
+    return parent::addItem($object);
+
+With
+
+    try { return parent::addItem($object); } catch (Exception $ex) { }
+
+In
+
+    /app/code/core/Mage/Eav/Model/Entity/Collection/Abstract.php(265)
+
+php -f shell/log.php clean
+
+php -f shell/indexer.php reindexall
