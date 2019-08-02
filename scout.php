@@ -19,7 +19,7 @@ public function searchableAs()
 php artisan tinker
 factory(App\User::class, 500)->create();
 
-php artisan scout:import "App\Post"
+php artisan scout:import "App\User"
 
 php artisan make:controller SearchController
 class SearchController extends Controller
