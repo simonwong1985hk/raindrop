@@ -34,9 +34,3 @@ class SearchController extends Controller
         return view('index', compact('users'));
     }
 }
-
-@isset($keywords)
-    {{ $users->appends(['query' => $keywords])->links() }}
-@else
-    {{ $users->links() }}
-@endisset
