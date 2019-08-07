@@ -119,12 +119,12 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:users|email',
         ]);
 
-        User::update($request->all());
+        User::update($validatedData);
 
         return redirect()->route('users.index');
     }
