@@ -97,12 +97,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:users|email',
         ]);
 
-        User::create($request->all());
+        User::create($validatedData);
 
         return back();
     }
