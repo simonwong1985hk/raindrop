@@ -1,10 +1,7 @@
 # Server
-
 git init
 git config receive.denyCurrentBranch updateInstead
 
-
 # Local
-
 git clone ssh://USER_NAME@HOST_NAME/home/USER_NAME/PROJECT_PATH
 git push origin master -u
