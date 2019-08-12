@@ -19,6 +19,12 @@ du -h * | sort -hk 1
 
 du -h * | sort -rhk 1
 
+# overwrite
+echo 'STRING' > FILENAME
+
+# append
+echo 'STRING' >> FILENAME
+
 find . -type f -name 'FILENAME' -exec mv {} {}.bak \;
 
 find . -type f -name 'FILENAME' -exec rename 's/OLD/NEW/' {} \;
