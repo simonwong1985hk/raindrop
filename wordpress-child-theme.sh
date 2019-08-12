@@ -1,17 +1,22 @@
 if [ ! -z $1 ]; then
 
-	path="./wp-content/themes/$1-child"
+	parent="./wp-content/themes/$1"
+	child="./wp-content/themes/$1-child"
 
-	if [ -d $path ]; then
-		rm -rf $path
+	if [ -d $child ]; then
+		rm -rf $child
 	fi
 
-	mkdir -p $path
+	mkdir -p $child
+
+	if [ -f $parent/screenshot* ]; then
+		cp $parent/screenshot* $child/
+	fi
 
 	echo "/*
  Theme Name:   $1-child
  Template:     $1
-*/" > $path/style.css
+*/" > $child/style.css
 
 	echo "<?php
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
@@ -23,7 +28,7 @@ function my_theme_enqueue_styles() {
         array( \$parent_style ),
         wp_get_theme()->get('Version')
     );
-}" > $path/functions.php
+}" > $child/functions.php
 
 else
 	echo '$1 = PARENT_THEME'
