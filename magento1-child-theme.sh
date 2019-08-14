@@ -32,7 +32,7 @@ else
 
     # Disable Cache Management
 
-    mysql -u $3 -p"$4" -e "USE $2; UPDATE core_cache_option SET value=0;"
+    mysql -u $3 -p$4 -e "USE $2; UPDATE core_cache_option SET value=0;"
 
     php -r "require_once('app/Mage.php');umask(0);Mage::app();Mage::getConfig()->saveConfig('design/package/name', '$1', 'default', 0);"
 
