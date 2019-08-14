@@ -330,26 +330,17 @@ EOF
 
 # Destroy Project
 down() {
-
-	if [ ! -z "$1" ]; then
-
+	if [ -z "$1" ]; then
+		echo 'For example: down PROJECT_NAME'
+	else
 		# Drop Codebase
 		go
 
 		if [ -d "$1" ]; then
-
 			rm -rfv $1
-
 		fi
 
 		# Drop Database
 		drop $1
-
-	else
-
-		echo 'down $1'
-
-		echo '$1 = PROJECT_NAME'
-
 	fi
 }
