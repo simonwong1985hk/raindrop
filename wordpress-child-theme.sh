@@ -5,16 +5,21 @@ if [ -z $1 ]; then
 else
 
 	parent="./wp-content/themes/$1"
+	
 	child="./wp-content/themes/$1-child"
 
 	if [ -d $child ]; then
+	
 		rm -rf $child
+		
 	fi
 
 	mkdir -p $child
 
 	if [ -f $parent/screenshot* ]; then
+	
 		cp $parent/screenshot* $child/
+		
 	fi
 
 	echo "/*
