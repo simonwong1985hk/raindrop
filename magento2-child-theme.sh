@@ -80,7 +80,7 @@ ComponentRegistrar::register(ComponentRegistrar::THEME, 'frontend/$1/$1', __DIR_
 </page>' > $path/Magento_Theme/layout/default.xml
 
     # Set Child Theme
-    mysql -u $3 -p$4 -e "USE $2; UPDATE core_config_data SET value = 4 WHERE path = 'design/theme/theme_id';"
+    mysql -u $3 -p$4 -e "USE $2; INSERT INTO core_config_data (scope, scope_id, path, value) VALUES ('default', 0, 'design/theme/theme_id', '4') ON DUPLICATE KEY UPDATE value = '4';"
 
     php bin/magento cache:flush
 
