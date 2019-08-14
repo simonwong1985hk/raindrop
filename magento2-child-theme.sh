@@ -1,6 +1,9 @@
-if [ -z $1 ]; then
+if [ -z $1 ] || [ -z $2 ] || [ -z $3 ] || [ -z $4 ]; then
 
     echo '$1 = CHILD_THEME_NAME'
+    echo '$2 = DATABASE_NAME'
+    echo '$3 = DATABASE_USER'
+    echo '$4 = DATABASE_PASSWORD'
 
 else
 
@@ -61,7 +64,7 @@ ComponentRegistrar::register(ComponentRegistrar::THEME, 'frontend/$1/$1', __DIR_
 
     rm -rf var/view_preprocessed/*
 
-    # Declaring theme logo
+    # Declaring Theme Logo
     mkdir -p $path/Magento_Theme/layout
 
     echo '<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
@@ -75,6 +78,9 @@ ComponentRegistrar::register(ComponentRegistrar::THEME, 'frontend/$1/$1', __DIR_
         </referenceBlock>
     </body>
 </page>' > $path/Magento_Theme/layout/default.xml
+
+    # Set Child Theme
+    mysql -u $3 -p$4 -e "USE $2; UPDATE core_config_data SET value = 4 WHERE path = 'design/theme/theme_id';"
 
     php bin/magento cache:flush
 
