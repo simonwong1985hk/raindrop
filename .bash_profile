@@ -46,36 +46,28 @@ go() {
 # Create Database
 create() {
 	if [ -z $1 ]; then
-
 		echo 'For example: create DATABASE_NAME* DATABASE_USER DATABASE_PASSWORD'
-
 	else
-
 		username=${2:-root}
 		password=${3:-root}
 
 		mysql -u$username -p$password -e "DROP DATABASE IF EXISTS $1; CREATE DATABASE IF NOT EXISTS $1;"
 
 		echo "Database $1 Created."
-
 	fi
 }
 
 # Drop Database
 drop() {
 	if [ -z $1 ]; then
-
-		echo 'For example: drop DATABASE_NAME* DATABASE_USER DATABASE_PASSWORD'
-
+		echo 'For example: drop DATABASE_NAME DATABASE_USER DATABASE_PASSWORD'
 	else
-
 		username=${2:-root}
 		password=${3:-root}
 
 		mysql -u$username -p$password -e "DROP DATABASE IF EXISTS $1;"
 
 		echo "Database $1 Dropped."
-
 	fi
 }
 
