@@ -1,15 +1,12 @@
 # PATH
-
 export PATH="~/.composer/vendor/bin:/usr/local/sbin:$PATH"
 
 # Alias
-
 alias ll='ls -alhG'
 
 alias grep='grep -irn --color=auto'
 
 # IP Address
-
 ip() {
 	dig +short myip.opendns.com @resolver1.opendns.com
 }
@@ -20,69 +17,72 @@ dns() {
 }
 
 # Empty trash
-
 empty() {
 	rm -rf ~/.Trash/*
 }
 
 # Go to phpMyAdmin
-
 db() {
 	open http://phpmyadmin.test/
 }
 
 # cPanel SSH Access
-
 DOMAIN() {
 	ssh USERNAME@IP_ADDRESS -i ~/.ssh/SSH_KEY
 }
 
 # Go to GitHub
-
 github() {
 	open https://github.com/simonwong1985hk
 }
 
 
 # Go to Sites
-
 go() {
 	cd /Users/simon/Sites
 	pwd
 }
 
 # Create Database
-
 create() {
-	mysql -u root -p"root" <<EOF
+	if [ -z $1 ]; then
 
-	DROP DATABASE IF EXISTS $1;
+		echo 'For example: create DATABASE_NAME* DATABASE_USER DATABASE_PASSWORD'
 
-	CREATE DATABASE IF NOT EXISTS $1;
+	else
 
-	EXIT
-EOF
-	echo 'Database Created.'
+		username=${2:-root}
+		password=${3:-root}
+
+		mysql -u$username -p$password -e "DROP DATABASE IF EXISTS $1; CREATE DATABASE IF NOT EXISTS $1;"
+
+		echo "Database $1 Created."
+
+	fi
 }
 
 # Drop Database
-
 drop() {
-	mysql -u root -p"root" <<EOF
+	if [ -z $1 ]; then
 
-	DROP DATABASE IF EXISTS $1;
+		echo 'For example: drop DATABASE_NAME* DATABASE_USER DATABASE_PASSWORD'
 
-	EXIT
-EOF
-	echo 'Database Deleted.'
+	else
+
+		username=${2:-root}
+		password=${3:-root}
+
+		mysql -u$username -p$password -e "DROP DATABASE IF EXISTS $1;"
+
+		echo "Database $1 Dropped."
+
+	fi
 }
 
 # Deploy Project
-
 up() {
 
 	# If the second parameter is omitted, use the first parameter as default value.
-
 	if [ -z "$2" ]; then
 
 		project=$1
@@ -94,11 +94,9 @@ up() {
 	fi
 
 	# Deploy Laravel
-
 	if [ "$1" == "laravel" ]; then
 
 		# Create Database
-
 		create $project
 
 		go
@@ -120,11 +118,9 @@ up() {
 		open http://$project.test
 
 	# Deploy WordPress
-
 	elif [ "$1" == "wordpress" ]; then
 
 		# Create Database
-
 		create $project
 
 		go
@@ -155,7 +151,6 @@ up() {
 		sudo rm -rf /var/mail/project
 
 	# Deploy Magento 1
-
 	elif [ "$1" == "magento1" ]; then
 
 		go
@@ -177,7 +172,6 @@ up() {
 		fi
 
 		# Create Database
-
 		create $project
 
 		php install.php --license_agreement_accepted yes \
@@ -198,7 +192,6 @@ up() {
 		open http://$project.test/admin
 
 	# Deploy Magento 1 with sample data
-
 	elif [ "$1" == "magento1demo" ]; then
 
 		go
@@ -220,7 +213,6 @@ up() {
 		fi
 
 		# Create Database
-
 		mysql -u root -p"root" <<EOF
 
 		DROP DATABASE IF EXISTS $project;
@@ -252,11 +244,9 @@ EOF
 		open http://$project.test/admin
 
 	# Deploy Magento 2
-
 	elif [ "$1" == "magento2" ]; then
 
 		# Create Database
-
 		create $project
 
 		go
@@ -291,11 +281,9 @@ EOF
 		open http://$project.test/admin
 
 	# Deploy Magento 2 with sample data
-
 	elif [ "$1" == "magento2demo" ]; then
 
 		# Create Database
-
 		create $project
 
 		go
@@ -341,13 +329,11 @@ EOF
 }
 
 # Destroy Project
-
 down() {
 
 	if [ ! -z "$1" ]; then
 
 		# Drop Codebase
-
 		go
 
 		if [ -d "$1" ]; then
@@ -357,7 +343,6 @@ down() {
 		fi
 
 		# Drop Database
-
 		drop $1
 
 	else
