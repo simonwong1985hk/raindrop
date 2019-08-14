@@ -1,4 +1,8 @@
-if [ ! -z $1 ]; then
+if [ -z $1 ]; then
+
+	echo '$1 = PARENT_THEME'
+
+else
 
 	parent="./wp-content/themes/$1"
 	child="./wp-content/themes/$1-child"
@@ -30,6 +34,4 @@ function my_theme_enqueue_styles() {
     );
 }" > $child/functions.php
 
-else
-	echo '$1 = PARENT_THEME'
 fi
