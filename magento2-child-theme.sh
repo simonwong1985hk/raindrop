@@ -1,13 +1,16 @@
-if [ -z $1 ] || [ -z $2 ] || [ -z $3 ] || [ -z $4 ]; then
+if [ $# -lt 2 ]; then
 
-    echo '$1 = CHILD_THEME_NAME'
-    echo '$2 = DATABASE_NAME'
+    echo '$1 = CHILD_THEME_NAME*'
+    echo '$2 = DATABASE_NAME*'
     echo '$3 = DATABASE_USER'
     echo '$4 = DATABASE_PASSWORD'
 
 else
 
-    # php bin/magento deploy:mode:set developer
+    username=${3:-root}
+    password=${4:-root}
+
+    php bin/magento deploy:mode:set developer
 
     mkdir -p app/design/frontend/$1/$1
 
@@ -80,8 +83,9 @@ ComponentRegistrar::register(ComponentRegistrar::THEME, 'frontend/$1/$1', __DIR_
 </page>' > $path/Magento_Theme/layout/default.xml
 
     # Set Child Theme
-    mysql -u $3 -p$4 -e "USE $2; INSERT INTO core_config_data (scope, scope_id, path, value) VALUES ('default', 0, 'design/theme/theme_id', '4') ON DUPLICATE KEY UPDATE value = '4';"
+    mysql -u$username -p$password -e "USE $2; INSERT INTO core_config_data (scope, scope_id, path, value) VALUES ('default', 0, 'design/theme/theme_id', '4') ON DUPLICATE KEY UPDATE value = '4';"
 
+    # Flush Cache
     php bin/magento cache:flush
 
 fi
