@@ -84,6 +84,16 @@ drop() {
 # Deploy Project
 up() {
 
+	if [ $# -eq 0 ]; then
+
+		echo 'up $1 $2'
+
+		echo '$1 = laravel,wordpress,magento1,magento2,magento1demo,magento2demo'
+
+		echo '$2 = PROJECT_NAME'
+
+	fi
+
 	# If the second parameter is omitted, use the first parameter as default value.
 	if [ -z "$2" ]; then
 
@@ -148,6 +158,7 @@ up() {
 		subl .
 
 		open http://$project.test
+
 		open http://$project.test/admin
 
 		sudo rm -rf /var/mail/project
@@ -180,7 +191,7 @@ up() {
 		--locale en_US --timezone "Asia/Hong_Kong" --default_currency HKD \
 		--db_host localhost --db_name $project --db_user root --db_pass root \
 		--db_prefix "" \
-		--url "http://$project.test/" --use_rewrites yes \
+		--url "http://$project.test/" --skip_url_validation yes --use_rewrites yes \
 		--use_secure no --secure_base_url "" --use_secure_admin no \
 		--admin_lastname admin --admin_firstname admin --admin_email "admin@admin.com" \
 		--admin_username admin --admin_password passw0rd \
@@ -191,6 +202,7 @@ up() {
 		subl .
 
 		open http://$project.test
+
 		open http://$project.test/admin
 
 	# Deploy Magento 1 with sample data
@@ -232,7 +244,7 @@ EOF
 		--locale en_US --timezone "Asia/Hong_Kong" --default_currency HKD \
 		--db_host localhost --db_name $project --db_user root --db_pass root \
 		--db_prefix "" \
-		--url "http://$project.test/" --use_rewrites yes \
+		--url "http://$project.test/" --skip_url_validation yes --use_rewrites yes \
 		--use_secure no --secure_base_url "" --use_secure_admin no \
 		--admin_lastname admin --admin_firstname admin --admin_email "admin@admin.com" \
 		--admin_username admin --admin_password passw0rd \
@@ -280,6 +292,7 @@ EOF
 		subl .
 
 		open http://$project.test
+
 		open http://$project.test/admin
 
 	# Deploy Magento 2 with sample data
@@ -317,15 +330,8 @@ EOF
 		subl .
 
 		open http://$project.test
+
 		open http://$project.test/admin
-
-	elif [ "$1" == "help" ]; then
-
-		echo 'up $1 $2'
-
-		echo '$1 = laravel,wordpress,magento1,magento2,magento1demo,magento2demo'
-
-		echo '$2 = PROJECT_NAME'
 
 	fi
 }
