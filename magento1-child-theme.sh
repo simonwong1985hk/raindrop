@@ -1,11 +1,14 @@
-if [ -z $1 ] || [ -z $2 ] || [ -z $3 ] || [ -z $4 ]; then
+if [ $# -lt 2 ]; then
 
-    echo '$1 = CHILD_THEME_NAME'
-    echo '$2 = DATABASE_NAME'
+    echo '$1 = CHILD_THEME_NAME*'
+    echo '$2 = DATABASE_NAME*'
     echo '$3 = DATABASE_USER'
     echo '$4 = DATABASE_PASSWORD'
 
 else
+
+    username=${3:-root}
+    password=${4:-root}
 
     mkdir -p app/design/frontend/$1/default
 
@@ -31,12 +34,12 @@ else
     sed -i '' 's/production/development/g' skin/frontend/$1/default/scss/config.rb
 
     # Disable Cache Management
+    mysql -u$username -p$password -e "USE $2; UPDATE core_cache_option SET value=0;"
 
-    mysql -u $3 -p$4 -e "USE $2; UPDATE core_cache_option SET value=0;"
-
+    # Set Child Theme
     php -r "require_once('app/Mage.php');umask(0);Mage::app();Mage::getConfig()->saveConfig('design/package/name', '$1', 'default', 0);"
 
-    rm -rf var/cache
+    rm -rf var/cache/*
 
     rm -rf skin/frontend/$1/default/images/media
     rm -rf skin/frontend/$1/default/scss/madisonisland.scss
