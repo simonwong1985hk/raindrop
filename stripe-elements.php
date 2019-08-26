@@ -18,6 +18,7 @@
 </form>
 
 # CSS
+<style>
 /**
  * The CSS shown here will not be introduced in the Quickstart guide, but shows
  * how you can use CSS to style your Element's container.
@@ -49,8 +50,10 @@
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+</style>
 
 # JavaScript
+<script>
 // Create a Stripe client.
 var stripe = Stripe('pk_test_yystjbcwE8mwxYjTbKh4qIgQ00G6jjOp5u');
 
@@ -121,8 +124,10 @@ function stripeTokenHandler(token) {
   // Submit the form
   form.submit();
 }
+</script>
 
 # PHP
+<?php
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 \Stripe\Stripe::setApiKey('sk_test_menC0iEa3hYE2ciqJjhCZoQR00gumwqe9B');
@@ -136,3 +141,4 @@ $charge = \Stripe\Charge::create([
     'description' => 'Example charge',
     'source' => $token,
 ]);
+?>
