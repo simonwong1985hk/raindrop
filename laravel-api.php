@@ -23,29 +23,33 @@ Route::apiResource('users', 'API\UserController');
 # GET: api/users
 public function index()
 {
-    //
+    return User::all();
 }
 
 # POST: api/users
 public function store(Request $request)
 {
-    //
+    return User::create($request->all());
 }
 
 # GET: api/users/{user}
 public function show(User $user)
 {
-    //
+    return $user;
 }
 
 # PUT: api/users/{user}
 public function update(Request $request, User $user)
 {
-    //
+    $user->update($request->all());
+
+    return $user;
 }
 
 # DELETE: api/users/{user}
 public function destroy(User $user)
 {
-    //
+    $user->delete();
+
+    return 204;
 }
