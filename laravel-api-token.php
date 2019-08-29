@@ -17,6 +17,8 @@ class AddsApiTokenToUsersTable extends Migration
     }
 }
 
+php artisan migrate
+
 # app/Http/Controllers/Auth/RegisterController.php
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
