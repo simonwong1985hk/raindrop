@@ -16,6 +16,9 @@ php artisan migrate --seed
 php artisan make:controller API/UserController --api --model=User
 
 # routes/api.php
+Route::get('api/users/{user}', function (App\User $user) {
+    return $user->email;
+});
 Route::apiResource('users', 'API\UserController');
 
 # app/Http/Controllers/API/UserController.php
