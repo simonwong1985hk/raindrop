@@ -19,6 +19,11 @@ class AddsApiTokenToUsersTable extends Migration
 
 php artisan migrate
 
+# app/User.php
+protected $fillable = [
+    'name', 'email', 'password', 'api_token',
+];
+
 # app/Http/Controllers/Auth/RegisterController.php
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
