@@ -39,4 +39,10 @@ protected function create(array $data)
 }
 
 # routes/api.php
+Route::group(['middleware' => 'auth:api'], function () {
+	Route::get('/user/{user}', function (Request $request, App\User $user) {
+    	return $user;
+	});
+});
+
 Route::post('register', 'Auth\RegisterController@register');
