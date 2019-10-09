@@ -1,0 +1,11 @@
+# wp-config.php
+define('WP_ALLOW_MULTISITE', true);
+
+# Tools => Network Setup
+
+# wp-config.php
+COPY & PASTE
+/* That's all, stop editing! Happy publishing. */
+
+# .htaccess
+COPY & PASTE
