@@ -1,13 +1,9 @@
-# Shared Hosting
-
-Add
-
-    $isShellDisabled = true;
-
-In
-
-    /cron.php
-
+# cron.php
+$disabledFuncs = array_map('trim', explode(',', strtolower(ini_get('disable_functions'))));
+$isShellDisabled = is_array($disabledFuncs) ? in_array('shell_exec', $disabledFuncs) : true;
+$isShellDisabled = (stripos(PHP_OS, 'win') === false) ? $isShellDisabled : true;
+# add below
+$isShellDisabled = true;
 
 #1 ISSUE:
 "Item (Mage_Catalog_Model_Product) with the same id "####" already exist"
