@@ -1,8 +1,17 @@
+# Caculator
 bc
 
+# Calendar
 cal
 
+# CPU
+cat /proc/cpuinfo
+
+# Datetime
 date
+
+# Storage
+df -H
 
 curl -O URL
 
@@ -10,24 +19,29 @@ curl -o NEW_FILE_NAME URL
 
 curl -T LOCAL_FILE -u 'FTP_USERNAME@FTP_PASSWORD' FTP_SERVER
 
+# edit cron job
 crontab -e
 *(0-59) *(0-23) *(1-31) *(1-12) *(0-6/Sun-Sat) COMMAND TO EXECUTE
 
+# list cron job
 crontab -l
 
 du -h * | sort -hk 1
 
 du -h * | sort -rhk 1
 
-# overwrite
+# Overwrite
 echo 'STRING' > FILENAME
 
-# append
+# Append
 echo 'STRING' >> FILENAME
 
 find . -type f -name 'FILENAME' -exec mv {} {}.bak \;
 
 find . -type f -name 'FILENAME' -exec rename 's/OLD/NEW/' {} \;
+
+# memory
+free -m
 
 grep -irn --color=auto 'PATTERN' .
 
@@ -72,8 +86,11 @@ uname -a
 
 unzip FILE.zip -d FOLDER
 
+# Preview zip file
 vi FILE.zip
 
+# zip
 zip -ry FILE.zip FOLDER
 
+# zip exclude folder
 zip -ry FILE.zip FOLDER -x FOLDER/\*
