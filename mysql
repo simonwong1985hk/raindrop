@@ -14,3 +14,5 @@ du -h /var/lib/mysql
 du -h /usr/local/var/mysql
 
 show create table TABLE_NAME;
+
+UPDATE table_name SET column_name = REPLACE(column_name, original_content, new_content);
