@@ -1,7 +1,6 @@
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-(https://github.com/creationix/nvm)
+https://github.com/nvm-sh/nvm
 
-nvm install stable
+nvm install stable (or v11.11.0)
 
 node -v
 
