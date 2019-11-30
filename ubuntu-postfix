@@ -1,0 +1,67 @@
+sudo apt update
+
+sudo apt upgrade
+
+sudo apt install bind9
+
+sudo apt install vim
+
+sudo vi /var/cache/bind/db.test
+$ORIGIN test.com.
+$TTL 1D
+@       IN SOA     ns1 root(
+                1 ;serial
+                1D ;refresh
+                2H ;retry
+                2W ;expire
+                5H ;minimum
+);
+@       IN        NS ns1
+ns1     IN        A 192.168.0.1
+mail    IN        A 192.168.0.1
+@       IN        MX 5 mail
+
+sudo named-checkzone test.com. /var/cache/bind/db.test
+
+sudo vi /etc/bind/named.conf.default-zones
+zone "test.com." {
+       type master;
+       file "db.test";
+};
+
+sudo vi /etc/bind/named.conf.options
+uncomment
+forwarders {
+        8.8.8.8;
+};
+
+sudo systemctl restart bind9
+
+sudo apt install network-manager
+
+sudo nmcli connection show
+
+sudo nmcli connection edit "[active connection name]"
+remove ipv4.dns
+set ipv4.dns [mail_server]
+save
+quit
+
+sudo nmcli connection down "[active connection name]"
+sudo nmcli connection up "[active connection name]"
+
+sudo hostnamectl set-hostname mail.test.com
+
+sudo apt install postfix
+
+sudo usermod -aG mail $(whoami)
+
+sudo useradd -m -G mail -s /bin/bash/ simon
+
+sudo passwd simon
+
+sudo apt install mailutils
+
+mail simon@test.com
+
+mail
