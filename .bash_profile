@@ -8,7 +8,7 @@ alias grep='grep -irn --color=auto'
 
 # IP Address
 ip() {
-	dig +short myip.opendns.com @resolver1.opendns.com
+	curl ifconfig.co
 }
 
 # DNS Information
