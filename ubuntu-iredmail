@@ -1,0 +1,20 @@
+sudo apt update
+
+sudo apt upgrade
+
+sudo hostnamectl set-hostname mail.your-domain.com
+
+/etc/hosts
+127.0.0.1       mail.your-domain.com localhost
+
+hostname -f
+
+wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.9.tar.bz2
+
+tar xvf iRedMail-0.9.9.tar.bz2
+
+cd iRedMail-0.9.9.tar.bz2
+
+chmod +x iRedMail.sh
+
+sudo bash iRedMail.sh
