@@ -4,7 +4,7 @@ sudo apt upgrade
 
 sudo hostnamectl set-hostname mail.your-domain.com
 
-/etc/hosts
+sudo vi /etc/hosts
 127.0.0.1       mail.your-domain.com localhost
 
 hostname -f
