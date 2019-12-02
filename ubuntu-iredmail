@@ -59,3 +59,5 @@ ssl_cert = </etc/letsencrypt/live/mail.your-domain.com/fullchain.pem
 ssl_key = </etc/letsencrypt/live/mail.your-domain.com/privkey.pem
 
 sudo systemctl reload dovecot
+
+telnet gmail-smtp-in.l.google.com 25
