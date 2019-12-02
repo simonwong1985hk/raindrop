@@ -18,3 +18,44 @@ cd iRedMail-0.9.9.tar.bz2
 chmod +x iRedMail.sh
 
 sudo bash iRedMail.sh
+
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt install certbot
+
+sudo certbot certonly --webroot --agree-tos --email your-email-address -d mail.your-domain.com -w /var/www/html/
+n
+
+sudo vi /etc/nginx/templates/ssl.tmpl
+CHANGE
+ssl_certificate /etc/ssl/certs/iRedMail.crt;
+ssl_certificate_key /etc/ssl/private/iRedMail.key;
+TO
+ssl_certificate /etc/letsencrypt/live/mail.your-domain.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/mail.your-domain.com/privkey.pem;
+
+sudo nginx -t
+
+sudo systemctl reload nginx
+
+sudo vi /etc/postfix/main.cf
+CHANGE
+smtpd_tls_key_file = /etc/ssl/private/iRedMail.key
+smtpd_tls_cert_file = /etc/ssl/certs/iRedMail.crt
+smtpd_tls_CAfile = /etc/ssl/certs/iRedMail.crt
+TO
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.your-domain.com/privkey.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.your-domain.com/cert.pem
+smtpd_tls_CAfile = /etc/letsencrypt/live/mail.your-domain.com/chain.pem
+
+sudo systemctl reload postfix
+
+sudo vi /etc/dovecot/dovecot.conf
+CHANGE
+ssl_cert = </etc/ssl/certs/iRedMail.crt
+ssl_key = </etc/ssl/private/iRedMail.key
+TO
+ssl_cert = </etc/letsencrypt/live/mail.your-domain.com/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.your-domain.com/privkey.pem
+
+sudo systemctl reload dovecot
