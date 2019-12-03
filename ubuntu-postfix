@@ -1,3 +1,37 @@
+hostname -f
+
+sudo hostnamectl set-hostname FQDN
+
+sudo apt-get update
+
+sudo apt-get install postfix -y
+
+[Internet Site]
+
+[FQDN]
+
+sudo postconf mail_version
+
+(sudo apt install net-tools)
+sudo netstat -lnpt
+
+(sudo ufw allow 25/tcp)
+
+(brew install nmap)
+(nmap your-server-ip)
+
+telnet gmail-smtp-in.l.google.com 25
+
+SEND: echo "test email" | sendmail your-account@gmail.com
+
+(postconf mail_spool_directory)
+
+RECEIVE: cat /var/mail/[user]
+
+(/var/log/mail.log)
+
+########
+
 sudo apt update
 
 sudo apt upgrade
