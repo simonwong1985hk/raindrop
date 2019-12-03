@@ -1,0 +1,22 @@
+sudo apt update
+
+sudo apt upgrade
+
+git clone https://github.com/modoboa/modoboa-installer
+
+sudo apt-get install python-virtualenv python-pip
+
+cd modoboa-installer
+
+sudo ./run.py --stop-after-configfile-check example.com
+
+sudo vi installer.cfg
+[certificate]
+type = letsencrypt
+[letsencrypt]
+email = your-email-address
+[database]
+engine = mysql
+
+sudo ./run.py --interactive example.com
+(sudo ./run.py --interactive --debug example.com)
