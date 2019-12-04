@@ -30,6 +30,18 @@ RECEIVE: cat /var/mail/[user]
 
 (/var/log/mail.log)
 
+sudo apt-get install mailutils
+mail your-account@gmail.com
+
+postconf | grep message_size_limit
+sudo postconf -e message_size_limit=52428800
+postconf | grep mailbox_size_limit
+sudo systemctl restart postfix
+
+sudo vi /etc/postfix/main.cf
+myhostname = mail.yourdomain.com
+sudo systemctl restart postfix
+
 ########
 
 sudo apt update
