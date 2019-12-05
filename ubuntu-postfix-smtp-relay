@@ -1,0 +1,96 @@
+hostnamectl
+sudo hostnamectl set-hostname www.your-domain.com
+host IP-ADDRESS #check pointer record
+
+sudo apt-get update
+sudo apt-get install postfix -y
+
+sudo vi /etc/postfix/main.cf
+inet_interfaces = loopback-only
+sudo systemctl restart postfix
+
+sudo apt-get install opendkim opendkim-tools
+
+sudo adduser postfix opendkim
+
+sudo vi /etc/opendkim.conf
+Canonicalization     relaxed/simple
+Mode                 s
+SubDomains           no
+# Map domains in From addresses to keys used to sign messages
+KeyTable           refile:/etc/opendkim/key.table
+SigningTable       refile:/etc/opendkim/signing.table
+# A set of internal hosts whose mail should be signed
+InternalHosts       /etc/opendkim/trusted.hosts
+
+sudo mkdir /etc/opendkim
+sudo mkdir /etc/opendkim/keys
+sudo chown -R opendkim:opendkim /etc/opendkim
+sudo chmod go-rw /etc/opendkim/keys
+
+sudo vi /etc/opendkim/signing.table
+*@example.com     sendonly._domainkey.example.com
+
+sudo vi /etc/opendkim/key.table
+sendonly._domainkey.example.com    example.com:sendonly:/etc/opendkim/keys/example.com/sendonly.private
+
+sudo vi /etc/opendkim/trusted.hosts
+127.0.0.1
+localhost
+
+*.example.com
+
+sudo mkdir /etc/opendkim/keys/example.com
+sudo opendkim-genkey -b 2048 -d example.com -D /etc/opendkim/keys/example.com -s sendonly -v
+sudo chown opendkim:opendkim /etc/opendkim/keys/example.com/sendonly.private
+
+sudo cat /etc/opendkim/keys/example.com/sendonly.txt
+Type TXT
+Name sendonly._domainkey
+Value (....sendonly.txt....)
+sudo opendkim-testkey -d example.com -s sendonly -vvv
+
+sudo vi /etc/opendkim.conf
+Change
+Socket local:/var/run/opendkim/opendkim.sock
+To
+Socket local:/var/spool/postfix/opendkim/opendkim.sock
+
+sudo mkdir /var/spool/postfix/opendkim
+sudo chown opendkim:postfix /var/spool/postfix/opendkim
+
+sudo vi /etc/default/opendkim
+Change
+SOCKET=local:$RUNDIR/opendkim.sock
+To
+SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
+
+sudo vi /etc/postfix/main.cf
+# Milter configuration
+milter_default_action = accept
+milter_protocol = 6
+smtpd_milters = local:/opendkim/opendkim.sock
+non_smtpd_milters = $smtpd_milters
+
+sudo systemctl restart opendkim postfix
+
+systemctl status opendkim
+
+TXT  @   v=spf1 mx ip4:IP-ADDRESS ip6:IP-ADDRESS ~all
+
+How to Configure Postfix Send-only SMTP Server For Multiple Domains
+
+Signing table:
+*@example.com       sendonly._domainkey.example.com
+*@example.net       sendonly._domainkey.example.net
+
+Key table:
+sendonly._domainkey.example.com     example.com:sendonly:/etc/opendkim/keys/example.com/sendonly.private
+sendonly._domainkey.example.net     example.net:sendonly:/etc/opendkim/keys/example.net/sendonly.private
+
+Trusted hosts:
+127.0.0.1
+localhost
+
+*.example.com
+*.example.net
