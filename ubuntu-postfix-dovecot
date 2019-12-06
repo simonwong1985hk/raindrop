@@ -1,47 +1,27 @@
 #postfix
 
-hostname -f
+hostnamectl
+sudo hostnamectl set-hostname [FQDN]
 
-sudo hostnamectl set-hostname FQDN
+sudo apt update
+sudo apt upgrade
 
-sudo apt-get update
-
-sudo apt-get install postfix -y
-
+sudo apt install postfix
 [Internet Site]
-
 [FQDN]
 
 sudo postconf mail_version
-
-(sudo apt install net-tools)
+sudo postconf mail_spool_directory
 sudo netstat -lnpt
-
-(sudo ufw allow 25/tcp)
-
-(brew install nmap)
-(nmap your-server-ip)
-
+sudo ufw status
+nmap [FQDN]
 telnet gmail-smtp-in.l.google.com 25
+(quit)
 
-SEND: echo "test email" | sendmail your-account@gmail.com
-
-(postconf mail_spool_directory)
-
-RECEIVE: cat /var/mail/[user]
-
-(/var/log/mail.log)
-
-sudo apt-get install mailutils
-mail your-account@gmail.com
-
-postconf | grep message_size_limit
-sudo postconf -e message_size_limit=52428800
-postconf | grep mailbox_size_limit
 sudo systemctl restart postfix
 
-sudo vi /etc/postfix/main.cf
-myhostname = mail.yourdomain.com
-sudo systemctl restart postfix
+echo "test" | sendmail someone@example.com
+cat /var/mail/[user]
+tail /var/log/mail.log
 
 #dovecot
