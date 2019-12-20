@@ -36,7 +36,6 @@ github() {
 	open https://github.com/simonwong1985hk
 }
 
-
 # Go to Sites
 go() {
 	cd /Users/simon/Sites
@@ -106,7 +105,7 @@ up() {
 	fi
 
 	# Deploy Laravel
-	if [ "$1" == "laravel" ]; then
+	if [ "$1" = "laravel" ]; then
 
 		# Create Database
 		create $project
@@ -130,7 +129,7 @@ up() {
 		open http://$project.test
 
 	# Deploy WordPress
-	elif [ "$1" == "wordpress" ]; then
+	elif [ "$1" = "wordpress" ]; then
 
 		# Create Database
 		create $project
@@ -164,7 +163,7 @@ up() {
 		sudo rm -rf /var/mail/project
 
 	# Deploy Magento 1
-	elif [ "$1" == "magento1" ]; then
+	elif [ "$1" = "magento1" ]; then
 
 		go
 
@@ -206,7 +205,7 @@ up() {
 		open http://$project.test/admin
 
 	# Deploy Magento 1 with sample data
-	elif [ "$1" == "magento1demo" ]; then
+	elif [ "$1" = "magento1demo" ]; then
 
 		go
 
@@ -258,7 +257,7 @@ EOF
 		open http://$project.test/admin
 
 	# Deploy Magento 2
-	elif [ "$1" == "magento2" ]; then
+	elif [ "$1" = "magento2" ]; then
 
 		# Create Database
 		create $project
@@ -296,7 +295,7 @@ EOF
 		open http://$project.test/admin
 
 	# Deploy Magento 2 with sample data
-	elif [ "$1" == "magento2demo" ]; then
+	elif [ "$1" = "magento2demo" ]; then
 
 		# Create Database
 		create $project
