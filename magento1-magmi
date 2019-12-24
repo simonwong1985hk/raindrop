@@ -3,11 +3,20 @@ URL/magmi/web/magmi.php
 Username: magmi
 Password: magmi
 
-# Advanced Utilities
-Clear Catalog, Categories and Reviews v1.0.2
+# Category Import
+0. Reset Category ID
+ALTER TABLE `catalog_category_entity` AUTO_INCREMENT=1
+1. Delete All Categories
+Advanced Utilities => Clear Catalog, Categories and Reviews v1.0.2
+2. Prepare the file to import in /var/import/categories.csv
+Format as below:
+sku,categories
+test,Category1/Sub Category1;;Category2/Sub Category2;;Category3/Sub Category3
+3. Choose [On the fly category creator/importer v0.2.5] only
+4. Run import.
 
-# Configure Global Parameters
-Reporting step in %: 0.5 (in case stuck)
+# In case stuck, go to Configure Global Parameters set
+Reporting step in %: 0.5
 
 # Configure Current Profile (Default)
 Profile to configure & Datasources - Keep the default value is OK
@@ -19,10 +28,6 @@ On the fly category creator/importer v0.2.5
 Image attributes processor v1.0.33a
 On the fly indexer v0.2
 Value Trimmer for select/multiselect v0.0.3
-
-# Category CSV
-sku,categories
-test,Category1/Sub Category1;;Category2/Sub Category2;;Category3/Sub Category3
 
 # Simple Product CSV - categories
 sku,attribute_set,type,store,categories,name,description,short_description,price,special_price,special_from_date,special_to_date,news_from_date,news_to_date,qty,is_in_stock,manage_stock,use_config_manage_stock,status,visibility,weight,tax_class_id,small_image,image,thumbnail,media_gallery
