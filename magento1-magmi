@@ -4,10 +4,10 @@ Username: magmi
 Password: magmi
 
 # Category Import
-0. Reset Category ID
-ALTER TABLE `catalog_category_entity` AUTO_INCREMENT=1
-1. Delete All Categories
+0. Delete All Categories
 Advanced Utilities => Clear Catalog, Categories and Reviews v1.0.2
+1. Reset Category ID
+ALTER TABLE `catalog_category_entity` AUTO_INCREMENT=1
 2. Prepare the file to import in /var/import/categories.csv
 Format as below:
 sku,categories
