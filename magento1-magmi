@@ -3,9 +3,15 @@ URL/magmi/web/magmi.php
 Username: magmi
 Password: magmi
 
+# Prerequisites
+Customer: [Advanced Utilities]=>[Clear Customers, Tags and Wishlists v1.0.1]
+Product: [Advanced Utilities]=>[Clear Catalog v1.0.4]
+Order: [Advanced Utilities]=>[Clear Orders v1.0.1]
+Category: [Advanced Utilities] => [Clear Catalog, Categories and Reviews v1.0.2]
+
 # Category Import
 0. Delete All Categories
-Advanced Utilities => Clear Catalog, Categories and Reviews v1.0.2
+Category: [Advanced Utilities] => [Clear Catalog, Categories and Reviews v1.0.2]
 1. Reset Category ID
 ALTER TABLE `catalog_category_entity` AUTO_INCREMENT=1
 2. Prepare the file to import in /var/import/categories.csv
