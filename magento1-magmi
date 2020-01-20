@@ -20,6 +20,7 @@ sku,categories
 test,Category1/Sub Category1;;Category2/Sub Category2;;Category3/Sub Category3
 3. Choose [On the fly category creator/importer v0.2.5] only
 4. Run import.
+5. [Advanced Utilities] => [Clear Catalog]
 
 # In case stuck, go to Configure Global Parameters set
 Reporting step in %: 0.5
