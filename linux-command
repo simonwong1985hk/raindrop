@@ -13,11 +13,11 @@ date
 # Storage
 df -H
 
-curl -O URL
+curl --remote-name URL
 
-curl -o NEW_FILE_NAME URL
+curl --output NEW_FILE_NAME URL
 
-curl -T LOCAL_FILE -u 'FTP_USERNAME@FTP_PASSWORD' FTP_SERVER
+curl --upload-file LOCAL_FILE --user USERNAME:PASSWORD ftp://####
 
 # edit cron job
 crontab -e
