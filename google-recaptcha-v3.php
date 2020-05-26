@@ -1,5 +1,10 @@
 /**
- * Client
+ * HTML
+ */
+<input type="hidden" name="recaptcha-response" id="recaptcha-response" />
+
+/**
+ * JavaScript
  */
 <script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_SITE_KEY"></script>
 <script>
@@ -11,10 +16,8 @@ grecaptcha.ready(function() {
 });
 </script>
 
-<input type="hidden" name="recaptcha-response" id="recaptcha-response" />
-
 /**
- * Server
+ * PHP
  */
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha-response'])) {
@@ -28,6 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha-response'])
 	// echo $recaptcha_json;
 
 	$recaptcha_object = json_decode($recaptcha_json);
-	
+
 	var_dump($recaptcha_object);
 }
