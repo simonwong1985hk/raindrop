@@ -29,7 +29,9 @@ Reporting step in %: 0.5
 Profile to configure & Datasources - Keep the default value is OK
 
 # Product Import
-Choose [Magmi Optimizer v1.0.5 info] and [Image attributes processor v1.0.33a] only
+[Magmi Optimizer v1.0.5 info]
+[Image attributes processor v1.0.33a] for import image
+[Custom Options v0.0.7a] for custom options
 php -f shell/indexer.php reindexall
 
 # Simple Product CSV - categories
