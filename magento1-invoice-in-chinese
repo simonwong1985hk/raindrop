@@ -1,6 +1,9 @@
 Download Noto Sans HK from https://fonts.google.com/
-
 Convert OTF to TTF by https://pypi.org/project/otf2ttf/
+
+or
+
+Get it from https://github.com/simonwong1985hk/raindrop/blob/master/NotoSansHK-Regular.ttf
 
 Move the TTF fonts to /lib/Fonts/XXXX
 
