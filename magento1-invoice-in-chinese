@@ -1,13 +1,15 @@
-Download the Noto Sans in TTF format: https://djmilch.wordpress.com/2016/01/19/free-font-noto-sans-cjk-in-ttf/
+Download Noto Sans HK from https://fonts.google.com/
 
-Move the fonts to /lib/Fonts/XXXX
+Convert OTF to TTF by https://pypi.org/project/otf2ttf/
+
+Move the TTF fonts to /lib/Fonts/XXXX
 
 Update /app/code/core/Mage/Sales/Model/Order/Pdf/Abstract.php
 
 protected function _setFontRegular($object, $size = 7)
 {
 	// $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_Re-4.4.1.ttf');
-	$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/Fonts/NotoSansCJKtc-Regular.ttf');
+	$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/Fonts/NotoSansHK-Regular.ttf');
 	$object->setFont($font, $size);
 	return $font;
 }
@@ -15,7 +17,7 @@ protected function _setFontRegular($object, $size = 7)
 protected function _setFontBold($object, $size = 7)
 {
 	// $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_Bd-2.8.1.ttf');
-	$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/Fonts/NotoSansCJKtc-Regular.ttf');
+	$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/Fonts/NotoSansHK-Regular.ttf');
 	$object->setFont($font, $size);
 	return $font;
 }
@@ -23,7 +25,7 @@ protected function _setFontBold($object, $size = 7)
 protected function _setFontItalic($object, $size = 7)
 {
 	// $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_It-2.8.2.ttf');
-	$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/Fonts/NotoSansCJKtc-Regular.ttf');
+	$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/Fonts/NotoSansHK-Regular.ttf');
 	$object->setFont($font, $size);
 	return $font;
 }
