@@ -3,13 +3,24 @@
  */
 <input type="hidden" name="recaptcha-response" id="recaptcha-response" />
 
+// Include the reCAPTCHA branding
+This site is protected by reCAPTCHA and the Google
+<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+<a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+
+/**
+ * CSS
+ */
+// Hide the reCAPTCHA badge
+.grecaptcha-badge { visibility: hidden; }
+
 /**
  * JavaScript
  */
 <script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_SITE_KEY"></script>
 <script>
 grecaptcha.ready(function() {
-  grecaptcha.execute('RECAPTCHA_SITE_KEY', {action: 'homepage'}).then(function(token) {
+  grecaptcha.execute('RECAPTCHA_SITE_KEY', {action: 'submit'}).then(function(token) {
   	var recaptcha_response = document.getElementById('recaptcha-response');
   	recaptcha_response.value = token;
   });
