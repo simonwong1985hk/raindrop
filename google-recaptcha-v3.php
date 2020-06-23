@@ -9,7 +9,7 @@ This site is protected by reCAPTCHA and the Google <a href="https://policies.goo
 /**
  * CSS
  */
-// Hide the reCAPTCHA badge
+/* Hide the reCAPTCHA badge */
 .grecaptcha-badge { visibility: hidden; }
 
 /**
