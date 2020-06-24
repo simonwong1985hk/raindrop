@@ -40,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha-response'])
 	// echo $recaptcha_json;
 
 	$recaptcha_object = json_decode($recaptcha_json);
-
-	var_dump($recaptcha_object);
+	
+	if (!$recaptcha_object->success) {
+	    return;
+	}
 }
