@@ -36,12 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha-response'])
 
 	$recaptcha_json = file_get_contents($recaptcha_verify_url . '?secret=' . $recaptcha_secret_key . '&response=' . $recaptcha_response);
 
-	// header('content-type: application/json');
-	// echo $recaptcha_json;
+	header('content-type: application/json');
+	echo $recaptcha_json;
+	exit;
 
-	$recaptcha_object = json_decode($recaptcha_json);
-	
-	if (!$recaptcha_object->success) {
-	    return;
-	}
+	// $recaptcha_object = json_decode($recaptcha_json);
+
+	// if (!$recaptcha_object->success) {
+	//     return;
+	// }
 }
