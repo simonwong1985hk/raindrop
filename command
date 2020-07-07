@@ -1,96 +1,110 @@
-# Caculator
+# Calculator
 bc
 
 # Calendar
 cal
+ncal
 
-# CPU
-cat /proc/cpuinfo
-
-# Datetime
+# Date and Time
 date
 
-# Storage
+# CPU info
+cat /proc/cpuinfo
+
+# Display free disk space
 df -H
 
-curl --remote-name URL
+# Download with remote filename
+curl URL -O
 
-curl --output NEW_FILE_NAME URL
+# Download with new filename
+curl URL -o "FILENAME"
 
+# Upload
 curl --upload-file LOCAL_FILE --user USERNAME:PASSWORD ftp://####
 
-# edit cron job
+# Edit cron job
 crontab -e
 *(0-59) *(0-23) *(1-31) *(1-12) *(0-6/Sun-Sat) COMMAND TO EXECUTE
 
-# list cron job
+# List cron job
 crontab -l
 
+# Display disk usage statistics
 du -h * | sort -hk 1
 
 du -h * | sort -rhk 1
 
 # Overwrite
-echo 'STRING' > FILENAME
+echo 'STRING' > 'FILENAME'
 
 # Append
-echo 'STRING' >> FILENAME
+echo 'STRING' >> 'FILENAME'
 
+# Rename
 find . -type f -name 'FILENAME' -exec mv {} {}.bak \;
 
 find . -type f -name 'FILENAME' -exec rename 's/OLD/NEW/' {} \;
 
-# memory
+# Display amount of free and used memory in the system
 free -m
 
+# Search
 grep -irn --color=auto 'PATTERN' .
 
+# Search and Replace
 grep -irl 'PATTERN' DIRECTORY/ | xargs sed -i '' 's/TARGET/REPLACEMENT/g'
 
+# Terminate a process
 kill PID
 
+# Flush DNS cache on a Mac
 killall -HUP mDNSResponder
 
+# Create a symbolic link
 ln -s TARGET NEW_LINK_NAME
 
-ls -lv
-
-openssl s_client -quiet -connect URL:PORT
-
+# Process status
 ps aux | grep 'APPLICATION NAME'
 
 ps -eo pcpu,pid,user,args | sort -r -k1 | less
 
+# Delete a symbolic link
 rm NEW_LINK_NAME (if folder, do NOT suffix with /)
 
-#without SOURCE_FOLDER
+# Without SOURCE_FOLDER
 rsync -av SOURCE_FOLDER/ DESTINATION_FOLDER
 
-#with SOURCE_FOLDER
+# With SOURCE_FOLDER
 rsync -av SOURCE_FOLDER DESTINATION_FOLDER
 
+# Upload
 scp LOCAL_FILE USER@HOST:/home/USER/public_html
 
-ssh USERNAME@HOSTNAME
+# Remote login
+ssh USER@HOST
 
+# Manipulate tape archives
 tar -zxvf FILE.tgz -C NEW_FOLDER
 
 telnet URL PORT
 
+# Display and update sorted information about processes
 top -o cpu
 
 top -o rsize
 
-# Kernel Version
+# Print operating system name
 uname -a
 
+# Extract a compressed file
 unzip FILE.zip -d FOLDER
 
-# Preview zip file
-vi FILE.zip
-
-# zip
+# Compress a folder
 zip -ry FILE.zip FOLDER
 
-# zip exclude folder
+# Compress a folder exclude one folder
 zip -ry FILE.zip FOLDER -x FOLDER/\*
+
+# Preview zip file
+zipinfo FILE.zip
