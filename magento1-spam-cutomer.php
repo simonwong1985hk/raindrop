@@ -37,8 +37,7 @@ ini_set('display_errors', 1);
 $customers = Mage::getModel('customer/customer')
                 ->getCollection()
                 ->addAttributeToSelect('*')
-                ->addAttributeToFilter(
-                    [
+                ->addAttributeToFilter([
                         [ 'attribute' => 'email', 'like' => '%.au' ],
                         [ 'attribute' => 'email', 'like' => '%.eu' ],
                         [ 'attribute' => 'email', 'like' => '%.de' ],
@@ -55,9 +54,7 @@ $customers = Mage::getModel('customer/customer')
                         [ 'attribute' => 'lastname', 'like' => '%http%' ],
                         [ 'attribute' => 'lastname', 'regexp' => '[0-9]' ],
                         [ 'attribute' => 'lastname', 'like' => '%GP' ],
-
-                    ]
-);
+                ]);
 
 $count = count($customers);
 
