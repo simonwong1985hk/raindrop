@@ -84,8 +84,11 @@ scp LOCAL_FILE USER@HOST:/home/USER/public_html
 # Remote login
 ssh USER@HOST
 
-# Manipulate tape archives
-tar -zxvf FILE.tgz -C NEW_FOLDER
+# zip
+tar -czvf FILE.tgz FOLDER
+
+# unzip
+tar -xzvf FILE.tgz -C NEW_FOLDER
 
 telnet URL PORT
 
