@@ -7,3 +7,8 @@ https://wordpress.org/plugins/loco-translate/
 https://wordpress.org/plugins/woo-poly-integration/
 
 https://translate.wordpress.org/projects/wp-plugins/woocommerce/language-packs/
+
+/**
+ * Disable unique SKU
+ */
+add_filter('wc_product_has_unique_sku', '__return_false');
