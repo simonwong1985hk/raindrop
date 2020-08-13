@@ -100,6 +100,8 @@ top -o rsize
 # Print operating system name
 uname -a
 
+ulimit -a
+
 # Extract a compressed file
 unzip FILE.zip -d FOLDER
 
