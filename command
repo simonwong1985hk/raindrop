@@ -49,6 +49,9 @@ find . -type f -name 'FILENAME' -exec rename 's/OLD/NEW/' {} \;
 # Display amount of free and used memory in the system
 free -m
 
+# Check CPU cores
+grep processor /proc/cpuinfo | wc -l
+
 # Search
 grep -irn --color=auto 'PATTERN' .
 
