@@ -51,6 +51,11 @@ free -m
 
 # Check CPU cores
 grep processor /proc/cpuinfo | wc -l
+# Check page request time
+curl -o /dev/null -s -w 'Total: %{time_total}s\n'  https://www.google.com
+# How many users can I have on my VPS?
+# How to estimate how many website visitors your hosting can deal with
+( CPU cores / Page request time )  * 60 * 0.75 = Max simultaneous users
 
 # Search
 grep -irn --color=auto 'PATTERN' .
