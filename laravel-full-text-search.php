@@ -1,4 +1,6 @@
 # database/migrations/2014_10_12_000000_create_users_table.php
+<?php
+
 public function up()
 {
     Schema::create('users', function (Blueprint $table) {
@@ -11,8 +13,10 @@ public function up()
         $table->timestamps();
     });
     
-    DB::statement('ALTER TABLE users ADD FULLTEXT fulltext_index (name, email)');
+    DB::statement('ALTER TABLE users ADD FULLTEXT search (name, email)');
 }
+
+?>
 
 php artisan migrate
 
@@ -55,11 +59,25 @@ trait FullTextSearch
     }
 }
 
-# app/User.php
-use FullTextSearch;
-protected $searchable = ['name', 'email'];
+?>
+
+# app/Models/User.php
+<?php
+use App\FullTextSearch;
+
+class User extends Authenticatable
+{
+    use FullTextSearch;
+
+    protected $searchable = ['name', 'email'];
+}
+
+?>
 
 php artisan make:controller SearchController
+
+<?php
+
 class SearchController extends Controller
 {
     public function search(Request $request)
@@ -67,16 +85,26 @@ class SearchController extends Controller
     	if($request->has('query')){
             $query = $request->input('query');
     		$users = User::search($query)->paginate(50);
-            return view('index', compact('users', $query));
+            return view('index', ['users' => $users]);
     	}else{
     		$users = User::paginate(50);
-            return view('index', compact('users'));
+            return view('index', ['users' => $users]);
     	}
     }
 }
+
+?>
+
+<?php
+
+@foreach ($users as $user)
+    <p>This is user {{ $user->id }}</p>
+@endforeach
 
 @isset($query)
     {{ $users->appends(['query' => $query])->links() }}
 @else
     {{ $users->links() }}
 @endisset
+
+?>
