@@ -1,36 +1,73 @@
-composer require laravel/scout
-php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
-# config/scout.php
+<?php
+/**
+ * 1 Scout
+ * composer require laravel/scout
+ * php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
+ * config/scout.php
+ */
 'queue' => true,
 
-composer require algolia/algoliasearch-client-php:^2.2
-# .env
+
+
+
+/**
+ * 2 Algolia
+ * composer require algolia/algoliasearch-client-php
+ * https://www.algolia.com
+ * .env
+ */
 ALGOLIA_APP_ID=YourApplicationID
 ALGOLIA_SECRET=YourAdminAPIKey
 
-# app/User.php
+
+
+
+/**
+ * 3 Model
+ * php artisan tinker
+ * factory(App\User::class, 500)->create();
+ * php artisan scout:import "App\Models\User"
+ * app/Models/User.php
+ */
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
-use Searchable;
-public function searchableAs()
+
+class User extends Model
 {
-    return 'users_index';
+    use Searchable;
 }
 
-php artisan tinker
-factory(App\User::class, 500)->create();
 
-php artisan scout:import "App\User"
 
-php artisan make:controller SearchController
+
+/**
+ * 4 Controller
+ * php artisan make:controller SearchController
+ */
 class SearchController extends Controller
 {
     public function search(Request $request)
     {
     	if($request->has('query')){
-    		$users = User::search($request->input('query'))->paginate(50);	
+    		$users = User::search($request->input('query'))->paginate(10);
     	}else{
-    		$users = User::paginate(50);
+    		$users = User::paginate(10);
     	}
-        return view('index', compact('users'));
+        return view('index', ['users' => $users]);
     }
 }
+
+
+
+
+/**
+ * 5 View
+ * resources/views/search.blade.php
+ */
+@foreach ($users as $user)
+    {{ $user->email }}
+@endforeach
+
+{{ $users->links() }}
