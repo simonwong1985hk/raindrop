@@ -41,7 +41,7 @@ trait FullTextSearch
 
         foreach($words as $key => $word) {
             if(strlen($word) >= 3) {
-                $words[$key] = '+' . $word . '*';
+                $words[$key] = '+' . '"' . $word . '"';
             }
         }
 
