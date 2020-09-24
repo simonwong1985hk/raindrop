@@ -60,8 +60,8 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-    	if($request->has('query')){
-    		$users = User::search($request->input('query'))->paginate(10);
+    	if($request->has('keywords')){
+    		$users = User::search($request->keywords)->paginate(10);
     	}else{
     		$users = User::paginate(10);
     	}
