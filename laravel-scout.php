@@ -26,7 +26,6 @@ ALGOLIA_SECRET=YourAdminAPIKey
  * 3 Model
  * php artisan tinker
  * factory(App\User::class, 500)->create();
- * php artisan scout:import "App\Models\User"
  * app/Models/User.php
  */
 namespace App\Models;
@@ -38,6 +37,8 @@ class User extends Model
 {
     use Searchable;
 }
+
+php artisan scout:import "App\Models\User"
 
 
 
