@@ -36,6 +36,15 @@ use Laravel\Scout\Searchable;
 class User extends Model
 {
     use Searchable;
+    
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
 }
 
 php artisan scout:import "App\Models\User"
