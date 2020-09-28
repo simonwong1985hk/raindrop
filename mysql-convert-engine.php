@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * select @@global.sql_mode;
  * /etc/my.cnf
  * sql_mode=
  */
