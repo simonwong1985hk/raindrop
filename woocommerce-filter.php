@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Change [Select Options] for variable product
+ * Change [Select options] for variable product
  */
 add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_product_add_to_cart_text' );
 function custom_woocommerce_product_add_to_cart_text() {
