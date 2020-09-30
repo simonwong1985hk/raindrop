@@ -3,13 +3,10 @@
 /**
  * Change [Select options] for variable product
  */
-add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_product_add_to_cart_text' );
-function custom_woocommerce_product_add_to_cart_text() {
-    global $product;
-    $product_type = $product->product_type;
-    switch ( $product_type ) {
-        case 'variable':
-            return __( 'Click to view more options', 'woocommerce' );
-            break;
-    }
-}
+add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
+  global $product;
+  if ( $product->is_type( 'variable' ) ) {
+    $text = $product->is_purchasable() ? __( 'CLICK TO VIEW MORE OPTIONS', 'woocommerce' ) : __( 'READ MORE', 'woocommerce' );
+  }
+  return $text;
+}, 10 );
