@@ -8,7 +8,7 @@ function custom_woocommerce_product_add_to_cart_text() {
     global $product;
     $product_type = $product->product_type;
     switch ( $product_type ) {
-    case 'variable':
+        case 'variable':
             return __( 'Click to view more options', 'woocommerce' );
             break;
     }
