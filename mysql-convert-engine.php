@@ -31,4 +31,4 @@ $result->free();
 
 $conn->close();
 
-echo "Connected successfully" . PHP_EOL;
+echo "Converted successfully" . PHP_EOL;
