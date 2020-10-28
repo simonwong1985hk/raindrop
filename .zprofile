@@ -1,42 +1,55 @@
-# PATH
-export PATH="~/.composer/vendor/bin:/usr/local/sbin:$PATH"
-
-# Alias
+# alias ll
 alias ll='ls -alhG'
 
+# alias grep
 alias grep='grep -irn --color=auto'
 
-# IP Address
+# check IP
 ip() {
 	curl ifconfig.co
 }
 
-# DNS Information
+# check DNS
 dns() {
 	open https://who.is/dns/$1
 }
 
-# Empty trash
-empty() {
-	rm -rf ~/.Trash/*
+# check SPF
+spf() {
+	dig txt $1
 }
 
-# Go to phpMyAdmin
+# check DKIM
+dkim() {
+	dig txt default._domainkey.$1
+}
+
+# check DMARC
+dmarc() {
+	dig txt _dmarc.$1
+}
+
+# flush DNS
+flush() {
+	sudo killall -HUP mDNSResponder; sleep 2;
+}
+
+# open phpmyadmin
 db() {
 	open http://phpmyadmin.test/
 }
 
-# cPanel SSH Access
+# access SSH
 DOMAIN() {
 	ssh USERNAME@IP_ADDRESS -i ~/.ssh/SSH_KEY
 }
 
-# Go to GitHub
+# open github
 github() {
 	open https://github.com/simonwong1985hk
 }
 
-# Go to Sites
+# go to working directory
 go() {
 	cd /Users/simon/Sites
 	pwd
