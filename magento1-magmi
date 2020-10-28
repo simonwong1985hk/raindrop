@@ -28,6 +28,9 @@ Reporting step in %: 0.5
 # Configure Current Profile (Default)
 Profile to configure & Datasources - Keep the default value is OK
 
+# Clear products only (keep categories)
+[Advanced Utilities] => [Clear Catalog]
+
 # Product Import
 [Magmi Optimizer v1.0.5 info]
 [Image attributes processor v1.0.33a] for import image
