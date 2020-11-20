@@ -14,6 +14,11 @@ dns() {
 	open https://who.is/dns/$1
 }
 
+# check hostname
+server() {
+	dig -x $(dig $1 +short) +short
+}
+
 # check SPF
 spf() {
 	dig txt $1
