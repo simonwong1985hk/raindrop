@@ -1,8 +1,14 @@
-# SSL
+# Redirect HTTP to HTTPS
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Redirect to public
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
 # Redirect http://www.yourdomain.com/subdir/* to http://www.yourdomain.com/
