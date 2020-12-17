@@ -72,6 +72,9 @@ killall -HUP mDNSResponder
 # Create a symbolic link
 ln -s TARGET NEW_LINK_NAME
 
+# Move include hidden files
+mv FOLDER/{.,}* DESTINATION
+
 # Process status
 ps aux | grep 'APPLICATION NAME'
 
