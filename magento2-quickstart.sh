@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# required information
+# prerequisite
 domain='DOMAIN_NAME'
 path='ABSOLUTE_PATH'
 email='EMAIL_ADDRESS'
