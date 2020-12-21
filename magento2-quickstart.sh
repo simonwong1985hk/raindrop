@@ -3,14 +3,16 @@
 # prerequisites
 domain=''
 docroot=''
-email=''
 vendor_name=''
 theme_name=''
 theme_title=''
 db_name=''
 db_user=''
 db_pass=''
+admin_user=''
 admin_pass=''
+admin_email=''
+cron_email=''
 
 # change to docroot
 cd $docroot
@@ -39,10 +41,10 @@ EOF
 --db-name=$db_name \
 --db-user=$db_user \
 --db-password=$db_pass \
---admin-firstname=admin \
---admin-lastname=admin \
---admin-email=$email \
---admin-user=admin \
+--admin-firstname=$admin_user \
+--admin-lastname=$admin_user \
+--admin-email=$admin_email \
+--admin-user=$admin_user \
 --admin-password=$admin_pass \
 --language=en_US \
 --currency=HKD \
@@ -151,7 +153,7 @@ mysql -u$db_user -p$db_pass -e "USE $db_name; INSERT INTO core_config_data (scop
 # set cron jobs
 crontab -r 2> /dev/null
 crontab -l > mycron
-echo 'MAILTO='"$email"'' >> mycron
+echo 'MAILTO='"$cron_email"'' >> mycron
 echo 'SHELL="/bin/bash"' >> mycron
 echo '*/5 * * * * /usr/local/bin/ea-php74 '"$docroot"'bin/magento cron:run >/dev/null 2>&1' >> mycron
 echo '*/5 * * * * /usr/local/bin/ea-php74 '"$docroot"'update/cron.php >/dev/null 2>&1' >> mycron
