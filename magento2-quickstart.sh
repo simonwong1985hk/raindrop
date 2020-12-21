@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# prerequisite
-domain='DOMAIN_NAME'
-path='ABSOLUTE_PATH'
-email='EMAIL_ADDRESS'
-vendor_name='VERDOR_NAME'
-theme_name='THEME_NAME'
-theme_title='THEME_TITLE'
-db_name='DATABASE_NAME'
-db_user='DATABASE_USER'
-db_pass='DATABASE_PASSWORD'
-admin_pass='ADMIN_PASSWORD'
+# prerequisites
+domain=''
+docroot=''
+email=''
+vendor_name=''
+theme_name=''
+theme_title=''
+db_name=''
+db_user=''
+db_pass=''
+admin_pass=''
 
 # change to docroot
-cd $HOME/public_html
+cd $docroot
 
 # delete all files
 rm -rf {.,}* 2> /dev/null
@@ -153,9 +153,9 @@ crontab -r 2> /dev/null
 crontab -l > mycron
 echo 'MAILTO='"$email"'' >> mycron
 echo 'SHELL="/bin/bash"' >> mycron
-echo '*/5 * * * * /usr/local/bin/ea-php74 '"$path"'bin/magento cron:run >/dev/null 2>&1' >> mycron
-echo '*/5 * * * * /usr/local/bin/ea-php74 '"$path"'update/cron.php >/dev/null 2>&1' >> mycron
-echo '*/5 * * * * /usr/local/bin/ea-php74 '"$path"'bin/magento setup:cron:run >/dev/null 2>&1' >> mycron
+echo '*/5 * * * * /usr/local/bin/ea-php74 '"$docroot"'bin/magento cron:run >/dev/null 2>&1' >> mycron
+echo '*/5 * * * * /usr/local/bin/ea-php74 '"$docroot"'update/cron.php >/dev/null 2>&1' >> mycron
+echo '*/5 * * * * /usr/local/bin/ea-php74 '"$docroot"'bin/magento setup:cron:run >/dev/null 2>&1' >> mycron
 crontab mycron
 rm mycron
 
