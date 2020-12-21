@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # prerequisite
-domain='wc.wowvps5.com'
-docroot='/home/wowvps5/public_html/wc/'
-db_name='wowvps5_wc'
-db_user='wowvps5_user'
-db_pass='wowvps5_passw0rd'
-admin_user='admin'
-admin_pass='woocommerce.Pa$$w0rd'
-admin_email='admin@admin.com'
+domain=''
+docroot=''
+db_name=''
+db_user=''
+db_pass=''
+admin_user=''
+admin_pass=''
+admin_email=''
 
 # change to docroot
 cd $docroot
