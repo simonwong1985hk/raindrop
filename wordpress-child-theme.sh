@@ -1,1 +1,0 @@
-wp scaffold child-theme
