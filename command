@@ -72,6 +72,9 @@ killall -HUP mDNSResponder
 # Create a symbolic link
 ln -s TARGET NEW_LINK_NAME
 
+# compress image with ImageMagick
+find . -type f -name '*.jpg' -exec mogrify -monitor -quality 50% {} \;
+
 # Move include hidden files
 mv FOLDER/{.,}* DESTINATION
 
