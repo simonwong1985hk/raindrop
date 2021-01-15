@@ -12,6 +12,13 @@ admin_email=''
 theme_name=''
 cron_email=''
 
+# check if a directory does not exist
+if [ ! -d $docroot ] 
+then
+    echo "no such directory $docroot"
+    exit
+fi
+
 # change to docroot
 cd $docroot
 
