@@ -14,7 +14,7 @@ admin_email=''
 if [ ! -d $docroot ] 
 then
     echo "no such directory $docroot"
-    exit
+    exit 1
 fi
 
 # change to docroot
