@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# check parameter
+if [ $# -eq 0 ]; then
+    echo 'requires one parameter'
+    exit 1
+fi
+
 # prerequisite
 domain=''
 docroot=''
