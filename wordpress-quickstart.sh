@@ -74,6 +74,9 @@ cp wp-content/themes/twentytwentyone/screenshot.* wp-content/themes/twentytwenty
 # delete themes
 /usr/local/bin/ea-php74 /usr/local/bin/wp theme delete twentynineteen twentytwenty
 
+# update themes
+/usr/local/bin/ea-php74 /usr/local/bin/wp theme update --all
+
 # install & activate classic editor
 /usr/local/bin/ea-php74 /usr/local/bin/wp plugin install classic-editor --activate
 
