@@ -120,7 +120,10 @@ ulimit -a
 unzip FILE.zip -d FOLDER
 
 # Convert YouTube video to audio
-youtube-dl --extract-audio --audio-format mp3 YOUTUBE_URL
+youtube-dl --extract-audio --audio-format mp3 'VIDEO_URL'
+
+# Convert YouTube playlist
+youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s" --yes-playlist 'PLAYLIST_URL'
 
 # Compress a folder
 zip -ry FILE.zip FOLDER
