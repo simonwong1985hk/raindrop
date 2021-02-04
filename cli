@@ -119,6 +119,9 @@ ulimit -a
 # Extract a compressed file
 unzip FILE.zip -d FOLDER
 
+# Convert YouTube video to audio
+youtube-dl --extract-audio --audio-format mp3 YOUTUBE_URL
+
 # Compress a folder
 zip -ry FILE.zip FOLDER
 
