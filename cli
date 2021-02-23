@@ -60,8 +60,11 @@ curl -o /dev/null -s -w 'Total: %{time_total}s\n'  https://www.google.com
 # Search
 grep -irn --color=auto 'PATTERN' .
 
-# Search and Replace
+# Search and Replace in macOS
 grep -irl 'PATTERN' DIRECTORY/ | xargs sed -i '' 's/TARGET/REPLACEMENT/g'
+
+# Search and Replace in Linux
+grep -irl 'PATTERN' DIRECTORY/ | xargs sed -i 's/TARGET/REPLACEMENT/g'
 
 # Terminate a process
 kill PID
