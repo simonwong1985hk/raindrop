@@ -122,6 +122,9 @@ ulimit -a
 # Extract a compressed file
 unzip FILE.zip -d FOLDER
 
+# Download web page with assets
+wget --page-requisites URL
+
 # Convert YouTube video to audio
 youtube-dl --extract-audio --audio-format mp3 'VIDEO_URL'
 
