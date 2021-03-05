@@ -125,6 +125,15 @@ unzip FILE.zip -d FOLDER
 # Download web page with assets
 wget --page-requisites URL
 
+# Reinstall WordPress from CLI
+wp core download --force
+
+# Reinstall all plugins from CLI
+wp plugin install $(wp plugin list --field=name) --force
+
+# Reinstall all themes from CLI
+wp theme install $(wp theme list --field=name) --force
+
 # Convert YouTube video to audio
 youtube-dl --extract-audio --audio-format mp3 'VIDEO_URL'
 
