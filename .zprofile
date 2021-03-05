@@ -14,6 +14,11 @@ dns() {
 	open https://who.is/dns/$1
 }
 
+# scan website by sucuri.net
+scan() {
+	open https://sitecheck.sucuri.net/results/$1
+}
+
 # check hostname
 server() {
 	dig -x $(dig $1 +short) +short
