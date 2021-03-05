@@ -16,3 +16,6 @@ du -h /usr/local/var/mysql
 show create table TABLE_NAME;
 
 UPDATE table_name SET column_name = REPLACE(column_name, original_content, new_content);
+
+# clear any malicious JS
+UPDATE table_name SET column_name = REGEXP_REPLACE(column_name, '<script(.*?)>((.|\n)*?)<\/script>', '');
