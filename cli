@@ -14,6 +14,9 @@ cat /proc/cpuinfo
 # Display free disk space
 df -H
 
+# Remove image background
+convert *.jpg/*.pdf -fuzz 10% -transparent white *.png
+
 # Download with remote filename
 curl URL -O
 
