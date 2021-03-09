@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Calculator
 bc
 
@@ -48,6 +50,12 @@ echo 'STRING' >> 'FILENAME'
 find . -type f -name 'FILENAME' -exec mv {} {}.bak \;
 
 find . -type f -name 'FILENAME' -exec rename 's/OLD/NEW/' {} \;
+
+# List server IP
+servers=(domain1.com domain2.com domain3.com domain4.com)
+for i in "${servers[@]}"; do
+	echo "$i \t $(dig +short $i)";
+done
 
 # Display amount of free and used memory in the system
 free -m
