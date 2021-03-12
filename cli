@@ -89,6 +89,9 @@ ln -s TARGET NEW_LINK_NAME
 # compress image with ImageMagick
 find . -type f -name '*.jpg' -exec mogrify -monitor -resize 1000 -quality 50% {} \;
 
+# convert po(Portable Object) file to mo(Machine Object) file
+msgfmt messages.po -o messages.mo
+
 # Move include hidden files
 mv FOLDER/{.,}* DESTINATION
 
