@@ -1,0 +1,30 @@
+Visual Studio Code: https://code.visualstudio.com
+
+SFTP: https://marketplace.visualstudio.com/items?itemName=liximomo.sftp
+
+[
+    {
+        "name": "YOUR_DOMAIN_NAME_1",
+        "context": "YOUR_DOMAIN_NAME_1",
+        "host": "YOUR_DOMAIN_NAME_1",
+        "protocol": "sftp",
+        "port": 22,
+        "username": "USERNAME",
+        "password": "PASSWORD",
+        "remotePath": "/home/USERNAME/public_html",
+        "uploadOnSave": true
+    },
+    {
+        "name": "YOUR_DOMAIN_NAME_2",
+        "context": "YOUR_DOMAIN_NAME_2",
+        "host": "YOUR_DOMAIN_NAME_2",
+        "protocol": "sftp",
+        "port": 22,
+        "username": "root",
+        "privateKeyPath": "/Users/LOCAL_USERNAME/.ssh/SSH_KEY_NAME",
+        "passphrase": "SSH_KEY_PASSWORD",
+        "remotePath": "/home",
+        "uploadOnSave": true
+    }
+]
+
